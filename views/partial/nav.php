@@ -10,7 +10,7 @@ echo '<style>
 
 echo 
 '<nav class="navbar navbar-expand-lg navbar-dark bg-dark">'.
-"<img src=" .URL_ROOT . URL_SUBFOLDER ."/assert/images/logo/logo.jpg".' alt="Logo" width="50" height="50">'.'
+"<img src=" .URL_ROOT . URL_SUBFOLDER ."/assert/images/logo/logo.png".' alt="Logo" width="50" height="50">'.'
 <a class="navbar-brand" href="index.php"<strong>MANITO</strong></a>
 <div class="collapse navbar-collapse" id="navbarSupportedContent">
   <ul class="navbar-nav mr-auto">
