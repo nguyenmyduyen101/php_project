@@ -43,6 +43,7 @@
     opacity: 1;
     transition: 0.4s;
 }
+
 .team .member:hover .member-info-content {
     bottom: 60px;
     transition: bottom 0.4s;
