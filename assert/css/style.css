@@ -1,9 +1,10 @@
 /* Our Team */
-.team{
+.team {
     background:#fff;
     padding: 60px;
 }
 /* hiển thị tên */
+
 .team .member {
     text-align: center;
     margin-bottom: 20px;
@@ -73,6 +74,7 @@
     display: block;
     background: none;
 }
+
 .about .progress .skill {
     padding: 10px 0;
     margin: 0 0 6px 0;
@@ -230,7 +232,3 @@ section {
     margin: 0;
     max-height: 40px;
 }
-  
-
-  
-

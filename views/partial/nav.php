@@ -32,9 +32,6 @@ echo
     <li class="nav-item">
       <a class="nav-link" >About Us</a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" >Contact Us</a>
-    </li>
       </ul>
         <form method="get"  class="form-inline my-2 my-lg-0 mx-3">
           <input class="form-control mr-sm-2" type="search" name="search" id="search" placeholder="Search" required>
