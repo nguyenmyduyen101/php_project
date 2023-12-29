@@ -127,7 +127,7 @@
                             <img src='<?= URL_ROOT . URL_SUBFOLDER ."/assert/images/team/Ảnh Duyên.jpg"?>' class="img-fluid" alt="">
                             <div class="member-info">
                                 <div class="member-info-content">
-                                    <h4>NguyenThiMyDuyen</h4>
+                                    <h4>Nguyen Thi My Duyen</h4>
                                 </div>
                             </div>
                         </div>
