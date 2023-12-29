@@ -1,37 +1,16 @@
 <?php
 session_start();
-
-
-$hostname = "localhost";
-$database = "database_project_php";
-$username = "root";
-$password = "";
-
-
-$dsn = "mysql:host=$hostname;dbname=$database;charset=utf8mb4";
-
-
-try {
-    $connection = new PDO($dsn, $username, $password);
-    $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die("Connection failed: " . $e->getMessage());
-}
-
+include_once'../database/database.php';
+$database = $database;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-   
-   
     if (isset($_POST['removeAllItem'])) {
         unset($_SESSION['cart']);
         echo "All items removed from the cart.";
     }
 
-
     if (isset($_POST['removeItem'])) {
         $itemId = $_POST['itemId'];
-       
-       
         if (isset($_SESSION['cart'][$itemId])) {
             unset($_SESSION['cart'][$itemId]);
             echo "Item removed from the cart.";
@@ -40,51 +19,54 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
-
     if (isset($_POST['pizzaId']) && isset($_POST['quantity'])) {
         $pizzaId = $_POST['pizzaId'];
         $quantity = $_POST['quantity'];
-
 
         $_SESSION['cart'][$pizzaId]['quantity'] = $quantity;
         echo "Cart updated successfully.";
     }
 
-
     if (isset($_POST['checkout'])) {
-       
-        echo "Checkout logic goes here.";
-       
-        $userId = $_POST['userId'];
-        $totalAmount = $_POST['totalAmount'];
+        // Assuming you have a database connection named $connection
+
+        // Replace 'your_userId' with the actual user ID
+        $userId = 2;
+
+        $totalAmount = 0;
+        foreach ($_SESSION['cart'] as $pizzaId => $item) {
+            // Fetch pizza details from the database
+            $stmt = $connection->prepare("SELECT pizzaPrice FROM pizza WHERE pizzaId = ?");
+            $stmt->execute([$pizzaId]);
+            $pizza = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            $quantity = $item['quantity'];
+            $totalAmount += $pizza['pizzaPrice'] * $quantity;
+        }
+
         $paymentMode = $_POST['paymentMode'];
         $address = $_POST['address'];
         $zipCode = $_POST['zipCode'];
         $phoneNo = $_POST['phoneNo'];
-       
-       
+
+        // Insert order details into the database
         $stmt = $connection->prepare("INSERT INTO orders (userId, address, zipCode, phoneNo, amount, paymentMode, orderStatus) VALUES (?, ?, ?, ?, ?, ?, '0')");
         $stmt->execute([$userId, $address, $zipCode, $phoneNo, $totalAmount, $paymentMode]);
-       
-       
+
         $orderId = $connection->lastInsertId();
 
-
-       
+        // Insert order items into the database
         foreach ($_SESSION['cart'] as $pizzaId => $item) {
             $quantity = $item['quantity'];
-
 
             $stmt = $connection->prepare("INSERT INTO orderItems (orderId, pizzaId, itemQuantity) VALUES (?, ?, ?)");
             $stmt->execute([$orderId, $pizzaId, $quantity]);
         }
 
-
-       
+        // Clear the cart after successful checkout
         unset($_SESSION['cart']);
+
+        echo "Checkout successful. Order placed!";
     }
 }
 ?>
-
-
-

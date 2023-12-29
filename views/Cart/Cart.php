@@ -1,9 +1,8 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <title>Cart</title>
@@ -34,109 +33,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Classic Hand Tossed</td>
-                                <td>249</td>
-                                <td>
-                                    <form id="frm43">
-                                        <input type="hidden" name="pizzaId" value="43">
-                                        <input type="number" name="quantity" value="1" class="text-center" onchange="updateCart(43)" onkeyup="return false" style="width:60px" min=1 oninput="check(this)" onClick="this.select();">
-                                    </form>
-                                </td>
-                                <td>249</td>
-                                <td>
-                                    <form action="../../controllers/Cart/Cart_controller.php" method="POST">
-                                        <button name="removeItem" class="btn btn-sm btn-outline-danger">Remove</button>
-                                        <input type="hidden" name="itemId" value="43">
-                                    </form>
-                                </td>
-                            </tr><tr>
-                                <td>2</td>
-                                <td>Wheat Thin Crust</td>
-                                <td>299</td>
-                                <td>
-                                    <form id="frm44">
-                                        <input type="hidden" name="pizzaId" value="44">
-                                        <input type="number" name="quantity" value="1" class="text-center" onchange="updateCart(44)" onkeyup="return false" style="width:60px" min=1 oninput="check(this)" onClick="this.select();">
-                                    </form>
-                                </td>
-                                <td>299</td>
-                                <td>
-                                    <form action="../../controllers/Cart/Cart_controller.php" method="POST">
-                                        <button name="removeItem" class="btn btn-sm btn-outline-danger">Remove</button>
-                                        <input type="hidden" name="itemId" value="44">
-                                    </form>
-                                </td>
-                            </tr><tr>
-                                <td>3</td>
-                                <td>Veg Pasta Italiano White</td>
-                                <td>99</td>
-                                <td>
-                                    <form id="frm31">
-                                        <input type="hidden" name="pizzaId" value="31">
-                                        <input type="number" name="quantity" value="1" class="text-center" onchange="updateCart(31)" onkeyup="return false" style="width:60px" min=1 oninput="check(this)" onClick="this.select();">
-                                    </form>
-                                </td>
-                                <td>99</td>
-                                <td>
-                                    <form action="../../controllers/Cart/Cart_controller.php" method="POST">
-                                        <button name="removeItem" class="btn btn-sm btn-outline-danger">Remove</button>
-                                        <input type="hidden" name="itemId" value="31">
-                                    </form>
-                                </td>
-                            </tr><tr>
-                                <td>4</td>
-                                <td>Non Veg Pasta Italiano White</td>
-                                <td>99</td>
-                                <td>
-                                    <form id="frm32">
-                                        <input type="hidden" name="pizzaId" value="32">
-                                        <input type="number" name="quantity" value="1" class="text-center" onchange="updateCart(32)" onkeyup="return false" style="width:60px" min=1 oninput="check(this)" onClick="this.select();">
-                                    </form>
-                                </td>
-                                <td>99</td>
-                                <td>
-                                    <form action="../../controllers/Cart/Cart_controller.php" method="POST">
-                                        <button name="removeItem" class="btn btn-sm btn-outline-danger">Remove</button>
-                                        <input type="hidden" name="itemId" value="32">
-                                    </form>
-                                </td>
-                            </tr><tr>
-                                <td>5</td>
-                                <td>Butterscotch Mousse Cake</td>
-                                <td>149</td>
-                                <td>
-                                    <form id="frm36">
-                                        <input type="hidden" name="pizzaId" value="36">
-                                        <input type="number" name="quantity" value="1" class="text-center" onchange="updateCart(36)" onkeyup="return false" style="width:60px" min=1 oninput="check(this)" onClick="this.select();">
-                                    </form>
-                                </td>
-                                <td>149</td>
-                                <td>
-                                    <form action="../../controllers/Cart/Cart_controller.php" method="POST">
-                                        <button name="removeItem" class="btn btn-sm btn-outline-danger">Remove</button>
-                                        <input type="hidden" name="itemId" value="36">
-                                    </form>
-                                </td>
-                            </tr><tr>
-                                <td>6</td>
-                                <td>Lava Cake</td>
-                                <td>99</td>
-                                <td>
-                                    <form id="frm35">
-                                        <input type="hidden" name="pizzaId" value="35">
-                                        <input type="number" name="quantity" value="1" class="text-center" onchange="updateCart(35)" onkeyup="return false" style="width:60px" min=1 oninput="check(this)" onClick="this.select();">
-                                    </form>
-                                </td>
-                                <td>99</td>
-                                <td>
-                                    <form action="../../controllers/Cart/Cart_controller.php" method="POST">
-                                        <button name="removeItem" class="btn btn-sm btn-outline-danger">Remove</button>
-                                        <input type="hidden" name="itemId" value="35">
-                                    </form>
-                                </td>
-                            </tr>                        
+                            <!-- ... (Các dòng sản phẩm giỏ hàng) ... -->
                         </tbody>
                     </table>
                 </div>
@@ -146,15 +43,7 @@
                     <div class="pt-4 border bg-light rounded p-3">
                         <h5 class="mb-3 text-uppercase font-weight-bold text-center">Order summary</h5>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0 bg-light">Total Price<span>122.000</span></li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center px-0 bg-light">Shipping<span>123.000</span></li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3 bg-light">
-                                <div>
-                                    <strong>The total amount of</strong>
-                                    <strong><p class="mb-0">(including Tax & Charge)</p></strong>
-                                </div>
-                                <span><strong>122.000</strong></span>
-                            </li>
+                            <!-- ... (Hiển thị thông tin đơn hàng) ... -->
                         </ul>
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
@@ -186,5 +75,28 @@
             </div>
         </div>
     </div>
+
+    <?php
+      
+        if (isset($_POST['viewCart'])) {
+            $userId = $_SESSION['userId']; 
+
+            $stmt = $connection->prepare("SELECT * FROM viewCart WHERE userId = ?");
+            $stmt->execute([$userId]);
+            $cartItems = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            foreach ($cartItems as $cartItem) {
+                echo "Pizza ID: " . $cartItem['pizzaId'] . "<br>";
+                echo "Quantity: " . $cartItem['itemQuantity'] . "<br>";
+                echo "Added Date: " . $cartItem['addedDate'] . "<br>";
+                echo "<hr>";
+            }
+        }
+    ?>
+
+</form>
+
+<!-- Nhúng mã JavaScript vào đây -->
+
 </body>
 </html>
