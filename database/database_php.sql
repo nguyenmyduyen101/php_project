@@ -1,15 +1,16 @@
-create database test_data_project ;
-use test_data_project ;
+
 drop database test_data_project;
+create database test_data_project ;
+use test_data_project ;	
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
 CREATE TABLE `categories` (
-  `id` int(12) NOT NULL,
+  `id` int(12) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `categorie_name` varchar(255) NOT NULL,
-  `create_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `update_at` datetime NOT NULL DEFAULT current_timestamp()
+  `create_at` datetime DEFAULT current_timestamp(),
+  `update_at` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `categories` (`id`, `categorie_name`, `create_at`,`update_at`) VALUES
