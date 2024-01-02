@@ -28,11 +28,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     if (isset($_POST['checkout'])) {
-        // Assuming you have a database connection named $connection
-
-        // Replace 'your_userId' with the actual user ID
+      
         $userId = 2;
-
         $totalAmount = 0;
         foreach ($_SESSION['cart'] as $pizzaId => $item) {
             // Fetch pizza details from the database
@@ -49,13 +46,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $zipCode = $_POST['zipCode'];
         $phoneNo = $_POST['phoneNo'];
 
-        // Insert order details into the database
         $stmt = $connection->prepare("INSERT INTO orders (userId, address, zipCode, phoneNo, amount, paymentMode, orderStatus) VALUES (?, ?, ?, ?, ?, ?, '0')");
         $stmt->execute([$userId, $address, $zipCode, $phoneNo, $totalAmount, $paymentMode]);
 
         $orderId = $connection->lastInsertId();
 
-        // Insert order items into the database
         foreach ($_SESSION['cart'] as $pizzaId => $item) {
             $quantity = $item['quantity'];
 
@@ -63,7 +58,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt->execute([$orderId, $pizzaId, $quantity]);
         }
 
-        // Clear the cart after successful checkout
         unset($_SESSION['cart']);
 
         echo "Checkout successful. Order placed!";
