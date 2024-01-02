@@ -48,6 +48,6 @@ echo
 
 echo '
   <button type="button" class="btn btn-success mx-2" style="background-color: #fff !important; color: #000 !important;" data-toggle="modal" data-target="#loginModal">Login</button>
-  <button type="button" class="btn btn-success mx-2" style="background-color: #fff !important; color: #000 !important;" data-toggle="modal" data-target="#signupModal">SignUp</button>';
+  <a href=" URL_ROOT . URL_SUBFOLDER. /SignUp" class="btn btn-success mx-2" style="background-color: #fff !important; color: #000 !important;" data-toggle="modal" data-target="#signupModal">SignUp</a>';
 echo 
 '</div></nav>';

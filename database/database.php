@@ -1,9 +1,28 @@
 <?php
+class database
+{
+    protected $table;
+    protected $connect;
 
-$hostname = "localhost";
-$database = "database_project_php";
-$username = "root";
-$password = "";
+    function __construct()
+    {
+        $hostname = "localhost";
+        $database = "database_project_php";
+        $username = "root";
+        $password = "";
 
-$dsn = "mysql:host=$hostname;dbname=$database;charset=utf8mb4";
-$conn = new PDO($dsn, $username, $password);
+        try {
+            $this->connect = new PDO("mysql:host=$hostname;dbname=$database", $username, $password);
+            $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch (PDOException $e) {
+            $e->getMessage();
+            $this->connect = null;
+        }
+    }
+    public function closeConnection()
+    {
+        if ($this->connect) {
+            $this->connect = null;
+        }
+    }
+}
