@@ -1,0 +1,49 @@
+body {
+    font-family: 'Arial', sans-serif;
+    padding: 3px;
+  }
+
+  .footer {
+    background-color: #c53232; /* Màu nền của footer */
+    color: white; /* Màu chữ */
+    padding: 20px; /* Khoảng cách giữa nội dung và mép của footer */
+    text-align: center; /* Canh giữa nội dung trong footer */
+  }
+
+  .social-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .social-icon {
+    margin-top:5px; /* Khoảng cách giữa các biểu tượng xã hội */
+    width: 50px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+
+  }
+
+  img {
+    width: 30px;
+    height: 30px;
+  }
+  .Manito{
+    /* margin-right: 60%; */
+    margin-top: 25px;
+  }
+  .copyright {
+    color: white;
+    font-size: 14px;
+  }
+  .image{
+    width: 50px;
+    height: 50px;
+  }
+  .logo{
+    margin-left: 100px;
+  }
+  .gach{
+    margin-top: 0px;
+  }
