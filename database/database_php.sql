@@ -1,4 +1,3 @@
-
 drop database test_data_project;
 create database test_data_project ;
 use test_data_project ;	
@@ -7,7 +6,7 @@ START TRANSACTION;
 SET time_zone = "+00:00";
 
 CREATE TABLE `categories` (
-  `id` int(12) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `id` int(12) NOT NULL  ,
   `categorie_name` varchar(255) NOT NULL,
   `create_at` datetime DEFAULT current_timestamp(),
   `update_at` datetime DEFAULT current_timestamp()
