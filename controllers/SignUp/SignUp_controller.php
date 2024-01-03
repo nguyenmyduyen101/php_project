@@ -1,22 +1,6 @@
 <?php
 
-
-$hostname = "localhost";
-$database = "database_project_php";
-$username = "root";
-$password = "";
-
-
-$dsn = "mysql:host=$hostname;dbname=$database;charset=utf8mb4";
-
-
-try {
-    $connection = new PDO($dsn, $username, $password);
-    $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die("Connection failed: " . $e->getMessage());
-}
-
+require_once('SignUp_model.php');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
@@ -24,33 +8,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $lastName = $_POST['lastName'];
     $email = $_POST['email'];
     $phone = $_POST['phone'];
-    $password = password_hash($_POST['password'], PASSWORD_BCRYPT); // Hash the password
+    $password = $_POST['password'];
 
+    $signupModel = new SignUp_model();
 
-    $sql = "INSERT INTO users (username, firstName, lastName, email, phone, userType, password, joinDate)
-            VALUES (?, ?, ?, ?, ?, '0', ?, NOW())";
+    $result = $signupModel->registerUser($username, $firstName, $lastName, $email, $phone, $password);
 
-
-    $stmt = $connection->prepare($sql);
-    $stmt->bindParam(1, $username);
-    $stmt->bindParam(2, $firstName);
-    $stmt->bindParam(3, $lastName);
-    $stmt->bindParam(4, $email);
-    $stmt->bindParam(5, $phone);
-    $stmt->bindParam(6, $password);
-
-
-    try {
-        $stmt->execute();
-        echo "Đăng ký thành công!";
-    } catch (PDOException $e) {
-        echo "Đã xảy ra lỗi khi đăng ký. Vui lòng thử lại sau.";
-   
+    if ($result) {
+        header("Location: login.html");
+        exit();
+    } else {
+        echo "Registration failed. Please try again.";
     }
-
-
-    $stmt->closeCursor();
 }
 ?>
-
-

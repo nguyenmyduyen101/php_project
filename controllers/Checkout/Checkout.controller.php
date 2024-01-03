@@ -1,33 +1,28 @@
 <?php
+// Import các file model và các thư viện cần thiết
+require_once 'checkout_model.php';
 
-$servername = "localhost";
-$username = "your_username";
-$password = "your_password";
-$dbname = "database_project_php";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-
-if ($conn->connect_error) {
-    die("Kết nối đến cơ sở dữ liệu thất bại: " . $conn->connect_error);
-}
-
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $fullName = $_POST["fullname"];
-    $phone = $_POST["phone"];
-    $zipCode = $_POST["zipcode"];
-    $password = $_POST["password"];
-
+// Kiểm tra xem action được thực hiện là gì
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Lấy thông tin từ form
+    $fullname = $_POST['fullname'];
+    $phone = $_POST['phone'];
+    $zipcode = $_POST['zipcode'];
+    $password = $_POST['password'];
     
-    $sql = "INSERT INTO users (username, firstName, lastName, email, phone, password) VALUES ('$username', '$firstName', '$lastName', '$email', '$phone', '$password')";
-
-    if ($conn->query($sql) === TRUE) {
-        echo "Thông tin đã được lưu vào cơ sở dữ liệu.";
+    $paymentResult = processPayment($fullname, $phone, $zipcode, $password);
+    
+    // Kiểm tra kết quả thanh toán
+    if ($paymentResult) {
+        header("Location: /path/to/order_confirmation.php");
+        exit();
     } else {
-        echo "Lỗi: " . $sql . "<br>" . $conn->error;
+       
+        header("Location: /path/to/checkout.php");
+        exit();
     }
-    
-    $conn->close();
+} else {
+    header("Location: /path/to/checkout.php");
+    exit();
 }
 ?>
