@@ -39,7 +39,7 @@ CREATE TABLE `orders` (
 
 
 CREATE TABLE `products` (
-  `id` int(12) NOT NULL,
+  `id` int(12) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `product_name` varchar(255) NOT NULL,
   `product_price` int(12) NOT NULL,
   `product_categorie_id` int(12) NOT NULL,
@@ -98,8 +98,6 @@ ALTER TABLE `order_items`
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`id`);
 
-ALTER TABLE `products`
-  ADD PRIMARY KEY (`id`);
 ALTER TABLE `products` ADD FULLTEXT KEY `product_name` (`product_name`);
 
 
