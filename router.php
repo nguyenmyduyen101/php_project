@@ -1,5 +1,7 @@
 <?php
-$uri = parse_url($_SERVER['REQUEST_URI'])['path'];
+$uri = parse_url($_SERVER['REQUEST_URI']);
+$path = rtrim($uri['path'], '/');
+$queryParams = $uri['query'] ?? '';
 
 $routes = [
     URL_ROOT . URL_SUBFOLDER . '/' => APP_ROOT . '/controllers/home/index.controller.php',
@@ -11,11 +13,11 @@ $routes = [
     URL_ROOT . URL_SUBFOLDER . '/Admin/Category/UpdatePost' => APP_ROOT . '/controllers/admin/Category/updatePost.controller.php',
     URL_ROOT . URL_SUBFOLDER . '/Admin/Category/Delete' => APP_ROOT . '/controllers/admin/Category/delete.controller.php',
     URL_ROOT . URL_SUBFOLDER . '/Account/Login' => APP_ROOT . '/controllers/account/login.controller.php',
-
+    URL_ROOT . URL_SUBFOLDER . '/Menu' => APP_ROOT . '/controllers/menu/index.controller.php',
+    URL_ROOT . URL_SUBFOLDER . '/Products' => APP_ROOT . '/controllers/product/index.controller.php',
 ];
-
-if (array_key_exists($uri, $routes)) {
-    require $routes[$uri];
+if (array_key_exists($path, $routes)) {
+    require $routes[$path];
 } else {
     echo "khong tim thay trang";
 }
