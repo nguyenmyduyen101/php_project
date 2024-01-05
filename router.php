@@ -13,8 +13,21 @@ $routes = [
     URL_ROOT . URL_SUBFOLDER . '/Admin/Category/UpdatePost' => APP_ROOT . '/controllers/admin/Category/updatePost.controller.php',
     URL_ROOT . URL_SUBFOLDER . '/Admin/Category/Delete' => APP_ROOT . '/controllers/admin/Category/delete.controller.php',
     URL_ROOT . URL_SUBFOLDER . '/Account/Login' => APP_ROOT . '/controllers/account/login.controller.php',
+
     URL_ROOT . URL_SUBFOLDER . '/Menu' => APP_ROOT . '/controllers/menu/index.controller.php',
     URL_ROOT . URL_SUBFOLDER . '/Products' => APP_ROOT . '/controllers/product/index.controller.php',
+
+    URL_ROOT . URL_SUBFOLDER . '/Admin/Product' => APP_ROOT . '/controllers/admin/Product/index.controller.php',
+    URL_ROOT . URL_SUBFOLDER . '/Admin/Product/Create' => APP_ROOT . '/controllers/admin/Product/create.controller.php',
+    URL_ROOT . URL_SUBFOLDER . '/Admin/Product/CreatePost' => APP_ROOT . '/controllers/admin/Product/createPost.controller.php',
+    URL_ROOT . URL_SUBFOLDER . '/Admin/Product/Update' => APP_ROOT . '/controllers/admin/Product/update.controller.php',
+    URL_ROOT . URL_SUBFOLDER . '/Admin/Product/UpdatePost' => APP_ROOT . '/controllers/admin/Product/updatePost.controller.php',
+    URL_ROOT . URL_SUBFOLDER . '/Admin/Product/Delete' => APP_ROOT . '/controllers/admin/Product/delete.controller.php',
+    URL_ROOT . URL_SUBFOLDER . '/Admin/Product/update1' => APP_ROOT . '/controllers/admin/Product/update1.controller.php',
+    URL_ROOT . URL_SUBFOLDER . '/Admin/Product/Insert' => APP_ROOT . '/controllers/admin/Product/insert.controller.php',
+    URL_ROOT . URL_SUBFOLDER . '/Admin/Product/insert1' => APP_ROOT . '/controllers/admin/Product/insert1.controller.php',
+
+
 ];
 if (array_key_exists($path, $routes)) {
     require $routes[$path];
