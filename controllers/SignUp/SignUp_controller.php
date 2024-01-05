@@ -11,7 +11,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST['password'];
 
     $signupModel = new SignUp_model();
-
     $result = $signupModel->registerUser($username, $firstName, $lastName, $email, $phone, $password);
 
     if ($result) {

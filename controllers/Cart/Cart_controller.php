@@ -1,13 +1,43 @@
 <?php
-require_once 'cart_model.php';
+
+include 'Cart_models.php';
+class CartController
+{
+    private $cartModel;
+
+    public function __construct()
+    {
+        $this->cartModel = new CartModel();
+    }
+
+    public function removeCartItem($itemId)
+    {
+        if ($this->cartModel->removeCartItem($itemId)) {
+            echo "Item removed successfully!";
+        } else {
+            echo "Error removing item!";
+        }
+    }
+
+    public function removeAllCartItems($userId)
+    {
+        if ($this->cartModel->removeAllCartItems($userId)) {
+            echo "All items removed successfully!";
+        } else {
+            echo "Error removing items!";
+        }
+    }
+}
+
+$cartController = new CartController();
+
+if (isset($_POST['removeItem'])) {
+    $itemId = $_POST['itemId'];
+    $cartController->removeCartItem($itemId);
+}
 
 if (isset($_POST['removeAllItem'])) {
     $userId = $_POST['userId'];
-    removeAllItems($userId);
-} elseif (isset($_POST['removeItem'])) {
-    $itemId = $_POST['itemId'];
-    removeItem($itemId);
+    $cartController->removeAllCartItems($userId);
 }
-header("Location: /path/to/cart.php");
-exit();
 ?>

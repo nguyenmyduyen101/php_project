@@ -1,7 +1,6 @@
 <?php
 
 include '../../database/database.php';
-
 class CartModel
 {
     private $conn;
@@ -21,7 +20,7 @@ class CartModel
     {
         $itemId = $this->conn->real_escape_string($itemId);
 
-        $sql = "DELETE FROM viewCart WHERE cartItemId = $itemId";
+        $sql = "DELETE FROM cart_items WHERE id = $itemId";
 
         if ($this->conn->query($sql) === TRUE) {
             return true;
@@ -34,7 +33,7 @@ class CartModel
     {
         $userId = $this->conn->real_escape_string($userId);
 
-        $sql = "DELETE FROM viewCart WHERE userId = $userId";
+        $sql = "DELETE FROM cart_items WHERE user_id = $userId";
 
         if ($this->conn->query($sql) === TRUE) {
             return true;
