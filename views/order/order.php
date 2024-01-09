@@ -44,13 +44,13 @@
     <div class="container">
         <h2><i class="fas fa-map-marker-alt"></i> Địa chỉ nhận hàng</h2>
         <div class="customer-info">
-            <p class="info-item"><span class="label">Tên khách hàng:</span> My Duyen</p>
-            <p class="info-item"><span class="label">Số điện thoại:</span> 0123456789</p>
+            <p class="info-item"><span class="label">Tên khách hàng:</span> <?= $user["user_name"]?></p>
+            <p class="info-item"><span class="label">Số điện thoại:</span> <?= $user["phone"]?></p>
             <p class="info-item"><span class="label">Địa chỉ:</span> 99 To Hien Thanh Street, Da Nang City</p>
         </div>
     </div><br>
 
-    <?php require_once "../../views/Order_Iterm_interface/index.php" ?><br>
+    <?php require_once APP_ROOT ."/views/Order_Iterm_interface/index.php" ?><br>
 
     <div class="checkout-button">
         <button style="background-color:#E31837; color: white;font-size: 20px; padding: 10px 20px;">CHECKOUT</button>

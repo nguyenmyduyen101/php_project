@@ -5,7 +5,7 @@ define('SITE_NAME', 'project_PHP');
 //App Root
 define('APP_ROOT', dirname(dirname(__FILE__)));
 define('URL_ROOT', '/');
-define('URL_SUBFOLDER', 'project/php_project');
+define('URL_SUBFOLDER', 'project_PHP');
 
 //DB Params
 define('DB_HOST', 'localhost');

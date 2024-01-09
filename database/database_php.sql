@@ -6,14 +6,21 @@ START TRANSACTION;
 SET time_zone = "+00:00";
 
 CREATE TABLE `categories` (
-  `id` int(12) NOT NULL  ,
+  `id` int(12) NOT NULL  auto_increment PRIMARY KEY ,
   `categorie_name` varchar(255) NOT NULL,
   `create_at` datetime DEFAULT current_timestamp(),
   `update_at` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `categories` (`id`, `categorie_name`, `create_at`,`update_at`) VALUES
-(1, 'VEG PIZZA', '2023-03-17 18:16:28','2023-03-18 18:16:28');
+(1, 'VEG PIZZA', '2023-03-17 18:16:28','2023-03-18 18:16:28'),
+(2, 'NON-VEG PIZZA', '2023-03-17 18:17:14', '2023-03-18 18:17:14'),
+(3, 'PIZZA MANIA','2023-03-17 18:17:43','2023-03-18 18:17:43'),
+(4, 'SIDES ORDERS','2023-03-17 18:19:10','2023-03-18 18:19:10'),
+(5, 'BEVERAGES','2023-03-17 21:58:58','2023-03-18 21:58:58'),
+(6, 'CHOICE OF CRUSTS','2023-03-18 07:55:28','2023-03-19 07:55:28'),
+(7, 'BURGER PIZZA','2023-03-18 08:06:30','2023-03-19 08:06:30'),
+(8, 'CHOICE OF TOPPINGS','2023-03-18 08:13:47','2023-03-19 08:13:47');
 
 
 CREATE TABLE `order_items` (
@@ -88,9 +95,6 @@ CREATE TABLE `cart_items` (
   `update_at` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-ALTER TABLE `categories`
-  ADD PRIMARY KEY (`id`);
-ALTER TABLE `categories` ADD FULLTEXT KEY `categorie_name` (`categorie_name`);
 
 ALTER TABLE `order_items`
   ADD PRIMARY KEY (`id`);

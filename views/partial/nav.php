@@ -40,23 +40,32 @@ $userId = 0;
 
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" onclick="show_list_categories()">Top Categories</a>
+        <?php
+        $hostname = "localhost";
+        $database = "test_data_project";
+        $username = "root";
+        $password = "";
+        
+        $dsn = "mysql:host=$hostname;dbname=$database;charset=utf8mb4";
+        
+          try {
+                $connection = new PDO($dsn, $username, $password);
+                $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            } catch (PDOException $e) {
+                die("Connection failed: " . $e->getMessage());
+            }
+            $sql = "SELECT * FROM categories";
+            $stmt = $connection -> prepare($sql);
+            $stmt -> execute();
+            $result = $stmt -> fetchAll(PDO::FETCH_ASSOC);
+        ?>
         <div class="dropdown-menu" id="list_categories">
-          <a class="dropdown-item" href="#>">VEG PIZZA</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">NON-VEG PIZZA</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">PIZZA MANIA</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">SIDES ORDERS</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">BEVERAGES</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">CHOICE OF CRUSTS</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">BURGER PIZZA</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">CHOICE OF TOPPINGS</a>
-          <div class="dropdown-divider"></div>
+          <?php foreach($result as $cate):?>
+            <a class="dropdown-item" href=<?= URL_ROOT . URL_SUBFOLDER . '/Products?category_id='.$cate["id"]?>><?=$cate["categorie_name"]?></a>
+            <div class="dropdown-divider"></div>
+            <?php endforeach?>
+
+    
         </div>
       </li>
 
