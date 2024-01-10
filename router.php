@@ -12,6 +12,13 @@ $routes = [
     URL_ROOT . URL_SUBFOLDER . '/Admin/Category/Update' => APP_ROOT . '/controllers/admin/Category/update.controller.php',
     URL_ROOT . URL_SUBFOLDER . '/Admin/Category/UpdatePost' => APP_ROOT . '/controllers/admin/Category/updatePost.controller.php',
     URL_ROOT . URL_SUBFOLDER . '/Admin/Category/Delete' => APP_ROOT . '/controllers/admin/Category/delete.controller.php',
+    URL_ROOT . URL_SUBFOLDER . '/Admin/Order' => APP_ROOT . '/controllers/admin/Order/index.controller.php',
+    URL_ROOT . URL_SUBFOLDER . '/Admin/Order/Create' => APP_ROOT . '/controllers/admin/Order/create.controller.php',
+    URL_ROOT . URL_SUBFOLDER . '/Admin/Order/CreatePost' => APP_ROOT . '/controllers/admin/Order/createPost.controller.php',
+    URL_ROOT . URL_SUBFOLDER . '/Admin/Order/Update' => APP_ROOT . '/controllers/admin/Order/update.controller.php',
+    URL_ROOT . URL_SUBFOLDER . '/Admin/Order/UpdatePost' => APP_ROOT . '/controllers/admin/Order/updatePost.controller.php',
+    URL_ROOT . URL_SUBFOLDER . '/Admin/Order/Delete' => APP_ROOT . '/controllers/admin/Order/delete.controller.php',
+
     URL_ROOT . URL_SUBFOLDER . '/Account/Login' => APP_ROOT . '/controllers/account/login.controller.php',
 
     URL_ROOT . URL_SUBFOLDER . '/Menu' => APP_ROOT . '/controllers/menu/index.controller.php',
@@ -26,6 +33,8 @@ $routes = [
     URL_ROOT . URL_SUBFOLDER . '/Admin/Product/update1' => APP_ROOT . '/controllers/admin/Product/update1.controller.php',
     URL_ROOT . URL_SUBFOLDER . '/Admin/Product/Insert' => APP_ROOT . '/controllers/admin/Product/insert.controller.php',
     URL_ROOT . URL_SUBFOLDER . '/Admin/Product/insert1' => APP_ROOT . '/controllers/admin/Product/insert1.controller.php',
+    
+    URL_ROOT . URL_SUBFOLDER . '/Admin/Order' => APP_ROOT . '/controllers\admin\Order\order.controller.php',
 
 
 ];
@@ -34,3 +43,4 @@ if (array_key_exists($path, $routes)) {
 } else {
     echo "khong tim thay trang";
 }
+
