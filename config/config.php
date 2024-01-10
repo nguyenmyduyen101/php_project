@@ -1,11 +1,11 @@
 <?php
 //site name
-define('SITE_NAME', 'project_PHP');
+define('SITE_NAME', 'php_project');
 
 //App Root
 define('APP_ROOT', dirname(dirname(__FILE__)));
 define('URL_ROOT', '/');
-define('URL_SUBFOLDER', 'project_PHP');
+define('URL_SUBFOLDER', 'php_project');
 
 //DB Params
 define('DB_HOST', 'localhost');
