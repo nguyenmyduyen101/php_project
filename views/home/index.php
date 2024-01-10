@@ -8,8 +8,11 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 
     <title>About Us</title>
+    <link href=<?= URL_ROOT . URL_SUBFOLDER ."/views/footer_interface/index.css" ?> rel="stylesheet">
 
     <link href=<?= URL_ROOT . URL_SUBFOLDER ."/assert/css/style.css" ?> rel="stylesheet">
+    
+
 </head>
 <body>
     <?php include APP_ROOT . '/database/database.php';?>
@@ -146,6 +149,7 @@
             </div>
         </section>
     </main>
+    <?php include 'views/footer_interface/index.php';?>
 
 </body>
 

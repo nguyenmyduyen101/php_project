@@ -91,7 +91,7 @@ html {
                 <th>Email</th> 
                 <th>Adress</th> 
                 <th>Product name</th> 
-                <th>Amount</th> 
+                <th>Quantity</th> 
                 <th>Order status</th> 
                 <th>Payment mode</th> 
                 <th>Created at</th> 
