@@ -1,5 +1,4 @@
 <?php
-
 $hostname = "localhost";
 $database = "test_data_project";
 $username = "root";
