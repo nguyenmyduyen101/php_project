@@ -1,6 +1,5 @@
 <?php
-require_once 'cart_model.php';
-
+require_once APP_ROOT . "/Models/Cart/cart_models.php";
 if (isset($_POST['removeAllItem'])) {
     $userId = $_POST['userId'];
     removeAllItems($userId);
@@ -10,4 +9,3 @@ if (isset($_POST['removeAllItem'])) {
 }
 header("Location: /path/to/cart.php");
 exit();
-?>
