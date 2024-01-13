@@ -1,5 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
+if (isset($_SESSION['message'])) {
+    echo '<p style="color: green;">' . $_SESSION['message'] . '</p>';
+    unset($_SESSION['message']);
+}
+?>
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
@@ -8,22 +15,21 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 
     <title>About Us</title>
-    <link href=<?= URL_ROOT . URL_SUBFOLDER ."/views/footer_interface/index.css" ?> rel="stylesheet">
-
-    <link href=<?= URL_ROOT . URL_SUBFOLDER ."/assert/css/style.css" ?> rel="stylesheet">
-    
+    <link href=<?= URL_ROOT . URL_SUBFOLDER . "/views/footer_interface/index.css" ?> rel="stylesheet">
+    <link href=<?= URL_ROOT . URL_SUBFOLDER . "/assert/css/style.css" ?> rel="stylesheet">
 
 </head>
+
 <body>
-    <?php include APP_ROOT . '/database/database.php';?>
-    <?php include 'views/partial/nav.php';?>
+    <?php include APP_ROOT . '/database/database.php'; ?>
+    <?php include 'views/partial/nav.php'; ?>
 
     <section id="hero">
         <div class="hero-container">
             <div class="carousel-inner" role="listbox">
                 <!-- Slide 1 -->
                 <div class="carousel-item active">
-                    <div class="carousel-background"><img src=<?=URL_ROOT . URL_SUBFOLDER ."/assert/images/slide/homepage1.jpg"?> style="width:100%" alt=""></div>
+                    <div class="carousel-background"><img src=<?= URL_ROOT . URL_SUBFOLDER . "/assert/images/slide/homepage1.jpg" ?> style="width:100%" alt=""></div>
                     <div class="carousel-container">
                         <div class="carousel-content">
                             <h2 class="animate__animated animate__fadeInDown">Welcome to <span>Manito Website</span></h2>
@@ -33,7 +39,7 @@
                 </div>
                 <!-- Slide 2 -->
                 <div class="carousel-item">
-                    <div class="carousel-background"><img src=<?=URL_ROOT . URL_SUBFOLDER ."/assert/images/slide/homepage2.jpg"?> style="width:100%" alt=""></div>
+                    <div class="carousel-background"><img src=<?= URL_ROOT . URL_SUBFOLDER . "/assert/images/slide/homepage2.jpg" ?> style="width:100%" alt=""></div>
                     <div class="carousel-container">
                         <div class="carousel-content">
                             <h2 class="animate__animated animate__fadeInDown mb-0">Our Mission</h2>
@@ -44,7 +50,7 @@
                 </div>
                 <!-- Slide 3 -->
                 <div class="carousel-item">
-                    <div class="carousel-background"><img src=<?=URL_ROOT . URL_SUBFOLDER ."/assert/images/slide/homepage3.jpg"?>style="width:100%" alt=""></div>
+                    <div class="carousel-background"><img src=<?= URL_ROOT . URL_SUBFOLDER . "/assert/images/slide/homepage3.jpg" ?>style="width:100%" alt=""></div>
                     <div class="carousel-container">
                         <div class="carousel-content">
                             <h2 class="animate__animated animate__fadeInDown mb-0"></h2>
@@ -65,7 +71,7 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <p class="font-italic">
-                            <img src=<?= URL_ROOT . URL_SUBFOLDER ."/assert/images/logo/logo.jpg"?> alt="Logo" width="150" height="100">
+                            <img src=<?= URL_ROOT . URL_SUBFOLDER . "/assert/images/logo/logo.jpg" ?> alt="Logo" width="150" height="100">
                         </p>
                         <h3>Welcome to <strong><span style="color: red;">Manito</span></strong></h3>
                         <h3><strong>The Worldwide Leader in Pizza Delivery</strong></h3>
@@ -117,7 +123,7 @@
                 <div class="row" style="padding-left: 228px;">
                     <div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.1s">
                         <div class="member">
-                            <img src='<?= URL_ROOT . URL_SUBFOLDER ."/assert/images/team/Ảnh Lệ.jpg"?>' class="img-fluid" alt="">
+                            <img src='<?= URL_ROOT . URL_SUBFOLDER . "/assert/images/team/Ảnh Lệ.jpg" ?>' class="img-fluid" alt="">
                             <div class="member-info">
                                 <div class="member-info-content">
                                     <h4>HoThiLe</h4>
@@ -127,7 +133,7 @@
                     </div>
                     <div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.1s">
                         <div class="member">
-                            <img src='<?= URL_ROOT . URL_SUBFOLDER ."/assert/images/team/Ảnh Duyên.jpg"?>' class="img-fluid" alt="">
+                            <img src='<?= URL_ROOT . URL_SUBFOLDER . "/assert/images/team/Ảnh Duyên.jpg" ?>' class="img-fluid" alt="">
                             <div class="member-info">
                                 <div class="member-info-content">
                                     <h4>Nguyen Thi My Duyen</h4>
@@ -137,7 +143,7 @@
                     </div>
                     <div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.1s">
                         <div class="member">
-                            <img src='<?= URL_ROOT . URL_SUBFOLDER ."/assert/images/team/Ảnh Niên.jpg"?>' class="img-fluid" alt="">
+                            <img src='<?= URL_ROOT . URL_SUBFOLDER . "/assert/images/team/Ảnh Niên.jpg" ?>' class="img-fluid" alt="">
                             <div class="member-info">
                                 <div class="member-info-content">
                                     <h4>ToNgolNien</h4>
@@ -149,7 +155,7 @@
             </div>
         </section>
     </main>
-    <?php include 'views/footer_interface/index.php';?>
+    <?php include 'views/footer_interface/index.php'; ?>
 
 </body>
 

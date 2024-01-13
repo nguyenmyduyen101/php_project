@@ -1,5 +1,4 @@
 <?php
-session_start();
 $loggedin = false;
 $userId = 0;
 ?>
@@ -8,9 +7,11 @@ $userId = 0;
   .navbar {
     background-color: #E31837 !important;
   }
+
   .li {
     list-style-type: none;
   }
+
   .form-login {
     position: fixed;
     top: 0;
@@ -19,6 +20,7 @@ $userId = 0;
     right: 0;
     z-index: 1000;
   }
+
   .model-container {
     width: 400px;
     background-color: #fff;
@@ -45,27 +47,27 @@ $userId = 0;
         $database = "test_data_project";
         $username = "root";
         $password = "";
-        
+
         $dsn = "mysql:host=$hostname;dbname=$database;charset=utf8mb4";
-        
-          try {
-                $connection = new PDO($dsn, $username, $password);
-                $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            } catch (PDOException $e) {
-                die("Connection failed: " . $e->getMessage());
-            }
-            $sql = "SELECT * FROM categories";
-            $stmt = $connection -> prepare($sql);
-            $stmt -> execute();
-            $result = $stmt -> fetchAll(PDO::FETCH_ASSOC);
+
+        try {
+          $connection = new PDO($dsn, $username, $password);
+          $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch (PDOException $e) {
+          die("Connection failed: " . $e->getMessage());
+        }
+        $sql = "SELECT * FROM categories";
+        $stmt = $connection->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         ?>
         <div class="dropdown-menu" id="list_categories">
-          <?php foreach($result as $cate):?>
-            <a class="dropdown-item" href=<?= URL_ROOT . URL_SUBFOLDER . '/Products?category_id='.$cate["id"]?>><?=$cate["categorie_name"]?></a>
+          <?php foreach ($result as $cate) : ?>
+            <a class="dropdown-item" href=<?= URL_ROOT . URL_SUBFOLDER . '/Products?category_id=' . $cate["id"] ?>><?= $cate["categorie_name"] ?></a>
             <div class="dropdown-divider"></div>
-            <?php endforeach?>
+          <?php endforeach ?>
 
-    
+
         </div>
       </li>
 
