@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $userId = $row['id'];
         echo $password;
         echo $row["password"];
-        if ($password == $row['password']) {
+        if (password_verify($password, $row['password'])) {
             session_start();
             // $_SESSION['loggedin'] = true;
             $_SESSION['username'] = $username;

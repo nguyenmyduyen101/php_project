@@ -1,11 +1,15 @@
 <?php
+require_once APP_ROOT . "/controllers/home/HomeController.php";
+require_once APP_ROOT . "/controllers/admin/Category/CategoryController.php";
+
+
 $uri = parse_url($_SERVER['REQUEST_URI']);
 $path = rtrim($uri['path'], '/');
 $queryParams = $uri['query'] ?? '';
 
 $routes = [
-    URL_ROOT . URL_SUBFOLDER . '/' => APP_ROOT . '/controllers/home/index.controller.php',
-    URL_ROOT . URL_SUBFOLDER . '/Home' => APP_ROOT . '/controllers/home/index.controller.php',
+    URL_ROOT . URL_SUBFOLDER . '/' => APP_ROOT . '/controllers/home/HomeController.php',
+    URL_ROOT . URL_SUBFOLDER . '/Home' => APP_ROOT . '/controllers/home/HomeController.php',
     URL_ROOT . URL_SUBFOLDER . '/Admin/Category' => APP_ROOT . '/controllers/admin/Category/index.controller.php',
     URL_ROOT . URL_SUBFOLDER . '/Admin/Category/Create' => APP_ROOT . '/controllers/admin/Category/create.controller.php',
     URL_ROOT . URL_SUBFOLDER . '/Admin/Category/CreatePost' => APP_ROOT . '/controllers/admin/Category/createPost.controller.php',
@@ -36,15 +40,25 @@ $routes = [
     URL_ROOT . URL_SUBFOLDER . '/Admin/Product/update1' => APP_ROOT . '/controllers/admin/Product/update1.controller.php',
     URL_ROOT . URL_SUBFOLDER . '/Admin/Product/Insert' => APP_ROOT . '/controllers/admin/Product/insert.controller.php',
     URL_ROOT . URL_SUBFOLDER . '/Admin/Product/insert1' => APP_ROOT . '/controllers/admin/Product/insert1.controller.php',
-    
+
     URL_ROOT . URL_SUBFOLDER . '/Admin/Order' => APP_ROOT . '/controllers\admin\Order\order.controller.php',
     URL_ROOT . URL_SUBFOLDER . '/order/order_success' => APP_ROOT . '/controllers\Order\order_success.controller.php',
 
 
 ];
-if (array_key_exists($path, $routes)) {
-    require $routes[$path];
-} else {
-    echo "khong tim thay trang";
-}
+switch (strtolower($path) ?? '') {
+    case '':
+    case strtolower(URL_ROOT . URL_SUBFOLDER . '/home'):
+        HomeController::index();
+        break;
 
+    case strtolower(URL_ROOT . URL_SUBFOLDER . '/admin/category'):
+        CategoryController::index();
+        break;
+    case strtolower(URL_ROOT . URL_SUBFOLDER . '/Admin/Category/Create'):
+        CategoryController::create();
+        break;
+    default:
+        echo "khong tim thay trang";
+        break;
+}
