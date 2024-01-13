@@ -1,12 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php
-if (isset($_SESSION['message'])) {
-    echo '<p style="color: green;">' . $_SESSION['message'] . '</p>';
-    unset($_SESSION['message']);
-}
-?>
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">

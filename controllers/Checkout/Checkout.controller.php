@@ -23,9 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         ];
         add_order_item($order_item);
     }
-    $_SESSION['message'] = 'Order successfully!';
-
-    header("Location: " . URL_ROOT . URL_SUBFOLDER . "/Home");
+    header("Location: " . URL_ROOT . URL_SUBFOLDER . "/order/order_success");
 } else {
     exit();
 }
