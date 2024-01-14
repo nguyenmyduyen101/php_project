@@ -51,7 +51,6 @@ class CategoryModel
             ':name'       => $entity["name"],
             ':create_at' => $entity["create_at"] ? $entity["create_at"]->format('Y-m-d H:i:s') : null,
             ':update_at' => $entity["update_at"] ? $entity["update_at"]->format('Y-m-d H:i:s') : null,
-            // Add other columns as needed
         ]);
     }
     public static function remove_category($id)

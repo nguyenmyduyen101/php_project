@@ -51,13 +51,25 @@ switch (strtolower($path) ?? '') {
     case strtolower(URL_ROOT . URL_SUBFOLDER . '/home'):
         HomeController::index();
         break;
-
     case strtolower(URL_ROOT . URL_SUBFOLDER . '/admin/category'):
         CategoryController::index();
         break;
     case strtolower(URL_ROOT . URL_SUBFOLDER . '/Admin/Category/Create'):
         CategoryController::create();
         break;
+    case strtolower(URL_ROOT . URL_SUBFOLDER . '/Admin/Category/CreatePost'):
+        CategoryController::createPost();
+        break;
+    case strtolower(URL_ROOT . URL_SUBFOLDER . '/Admin/Category/Delete'):
+        CategoryController::delete();
+        break;
+    case strtolower(URL_ROOT . URL_SUBFOLDER . '/Admin/Category/Update'):
+        CategoryController::update();
+        break;
+    case strtolower(URL_ROOT . URL_SUBFOLDER . '/Admin/Category/UpdatePost'):
+        CategoryController::updatePost();
+        break;
+
     default:
         echo "khong tim thay trang";
         break;
