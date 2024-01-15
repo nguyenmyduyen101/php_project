@@ -85,27 +85,23 @@ function addToCart($entity)
     {
     global $connection;
 
-    $sql = "UPDATE products SET 
-    product_name = :product_name,
-    product_price = :product_price,
-    product_categorie_id = :product_categorie_id
-    WHERE id = :id";
+    $sql = "UPDATE carts SET 
+    quantity = :quantity,
+    WHERE product_id = :product_id";
 
     $stmt = $connection->prepare($sql);
     $stmt->execute([
-    ':product_name' => $entity["product_name"],
-    ':product_price' => $entity['product_price'],
-    ':product_categorie_id' => $entity['product_categorie_id'],
-    ':id' => $entity['id'] // Assuming 'id' is part of your entity array
+    ':quantity' => $entity["quantity"],
+    ':product_id' => $entity['product_id'] // Assuming 'id' is part of your entity array
     // Add other columns as needed
     ]);
     }
     function remove_Cart($id)
     {
         global $connection;
-        $sql = "DELETE FROM products WHERE id = :id";
+        $sql = "DELETE FROM carts WHERE product_id = :product_id";
         $stmt = $connection -> prepare($sql);
         $stmt -> execute([
-            ':id' => $id,
+            ':product_id' => $id,
         ]);
     }
