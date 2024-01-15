@@ -77,10 +77,8 @@ INSERT INTO `users` (`id`, `user_name`, `first_name`, `last_name`, `email`, `pho
 (1, 'duyen', 'duyen', 'duyen', 'duyen@gmail.com', 0386999547, '1', '1234', '2023-04-11 11:40:58','2023-04-15 11:40:58');
 
 
-CREATE TABLE `cart` (
+CREATE TABLE `carts` (
   `id` int(11) NOT NULL,
-  `product_id` int(11) NOT NULL,
-  `item_quantity` int(100) NOT NULL,
   `user_id` int(11) NOT NULL,
   `create_at` datetime NOT NULL DEFAULT current_timestamp(),
   `update_at` datetime NOT NULL DEFAULT current_timestamp()
@@ -88,6 +86,7 @@ CREATE TABLE `cart` (
 
 CREATE TABLE `cart_items` (
   `id` int(11) NOT NULL,
+  `cart_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `price` int(21) NOT NULL,
   `quantity` int(100) NOT NULL,
@@ -110,7 +109,7 @@ ALTER TABLE `users`
   ADD UNIQUE KEY `user_name` (`user_name`);
 
 
-ALTER TABLE `cart`
+ALTER TABLE `carts`
   ADD PRIMARY KEY (`id`);
 
 ALTER TABLE `cart_items`
@@ -127,7 +126,7 @@ ALTER TABLE `users`
   MODIFY `id` int(21) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 
-ALTER TABLE `cart`
+ALTER TABLE `carts`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
   
 ALTER TABLE `cart_items`

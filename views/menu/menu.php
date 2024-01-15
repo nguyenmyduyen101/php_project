@@ -17,15 +17,20 @@
     <div class="row">
       <?php foreach($products as $product):?>
       <div class="col-xs-3 col-sm-3 col-md-3">
+      
         <div class="card" style="width: 18rem;">
           <img src=<?=URL_ROOT . URL_SUBFOLDER ."/assert/images/image_menu/card-1.jpg" ?> class="card-img-top" alt="image for this pizza" width="249px" height="270px">
           <div class="card-body">
             <h5 class="card-title"><?=$product["product_name"]?></h5>
             <h6 style="color: #ff0000">Rs. <?=$product["product_price"]?>/-</h6>
             <p class="card-text">Pepper Barbecue Chicken I Che...</p>
-            <div class="row justify-content-center"><button class="btn btn-primary mx-2" data-toggle="modal" data-target="#loginModal">Add to Cart</button></form>
-              <a href="viewPizza.php?pizzaid=13" class="mx-2"><button class="btn btn-primary">Quick View</button></a>
-            </div>
+            <div class="row justify-content-center">
+            <form  action=<?="/" . URL_ROOT . URL_SUBFOLDER . "/addToCart" ?> method="post">
+              <input type="hidden" name="product_id" value="<?=$product["id"]?>">
+              <button class="btn btn-primary mx-2"  type="submit">Add to Cart</button>
+            </form>
+            <a href="viewPizza.php?pizzaid=13" class="mx-2"><button class="btn btn-primary">Quick View</button></a>
+          </div>
           </div>
         </div>
       </div>
