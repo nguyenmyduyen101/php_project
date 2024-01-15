@@ -6,4 +6,4 @@ $cart_id = $_POST['itemId'];
 $entity= [
     'id'=> $cart_id,
 ];
-$result= deleteCart($entity);
+$result= remove_Cart($entity);

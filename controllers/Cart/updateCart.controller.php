@@ -9,4 +9,4 @@ $entity= [
     'product_id'=> $product_id,
 
 ];
-$result= updateCart($entity);
+$result= update_Cart($entity);
