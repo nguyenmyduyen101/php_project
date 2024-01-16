@@ -7,10 +7,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt = $connection->prepare($sql);
     $stmt->bindParam(':user_name', $username, PDO::PARAM_STR);
     $stmt->execute();
-
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
     $num = $stmt->rowCount();
-
     if ($num == 1) {
         $userId = $row['id'];
         echo $password;

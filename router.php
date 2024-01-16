@@ -1,6 +1,8 @@
 <?php
 require_once APP_ROOT . "/controllers/home/HomeController.php";
 require_once APP_ROOT . "/controllers/admin/Category/CategoryController.php";
+require_once APP_ROOT . "/controllers/admin/Order/OrderController.php";
+require_once APP_ROOT . "/controllers/admin/Product/ProductController.php";
 
 
 $uri = parse_url($_SERVER['REQUEST_URI']);
@@ -48,10 +50,11 @@ $routes = [
 ];
 switch (strtolower($path) ?? '') {
     case '':
-    case strtolower(URL_ROOT . URL_SUBFOLDER . '/home'):
+    case strtolower(URL_ROOT . URL_SUBFOLDER . '/Home'):
         HomeController::index();
         break;
-    case strtolower(URL_ROOT . URL_SUBFOLDER . '/admin/category'):
+        //Category
+    case strtolower(URL_ROOT . URL_SUBFOLDER . '/Admin/Category'):
         CategoryController::index();
         break;
     case strtolower(URL_ROOT . URL_SUBFOLDER . '/Admin/Category/Create'):
@@ -69,6 +72,39 @@ switch (strtolower($path) ?? '') {
     case strtolower(URL_ROOT . URL_SUBFOLDER . '/Admin/Category/UpdatePost'):
         CategoryController::updatePost();
         break;
+        //Order
+    case strtolower(URL_ROOT . URL_SUBFOLDER . '/Admin/Order'):
+        OrderController::index();
+        break;
+    case strtolower(URL_ROOT . URL_SUBFOLDER . '/Admin/Order/Delete'):
+        OrderController::delete();
+        break;
+    case strtolower(URL_ROOT . URL_SUBFOLDER . '/Admin/Order/Update'):
+        OrderController::update();
+        break;
+    case strtolower(URL_ROOT . URL_SUBFOLDER . '/Admin/Order/UpdatePost'):
+        OrderController::updatePost();
+        break;
+        //Product    
+    case strtolower(URL_ROOT . URL_SUBFOLDER . '/Admin/Product'):
+        ProductController::index();
+        break;
+    case strtolower(URL_ROOT . URL_SUBFOLDER . '/Admin/Product/Delete'):
+        ProductController::delete();
+        break;
+    case strtolower(URL_ROOT . URL_SUBFOLDER . '/Admin/Product/Insert'):
+        ProductController::insert();
+        break;
+    case strtolower(URL_ROOT . URL_SUBFOLDER . '/Admin/Product/insert1'):
+        ProductController::insert1();
+        break;
+    case strtolower(URL_ROOT . URL_SUBFOLDER . '/Admin/Product/Update'):
+        ProductController::update();
+        break;
+    case strtolower(URL_ROOT . URL_SUBFOLDER . '/Admin/Product/update1'):
+        ProductController::update1();
+        break;
+
 
     default:
         echo "khong tim thay trang";

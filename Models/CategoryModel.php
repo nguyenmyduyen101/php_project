@@ -13,7 +13,6 @@ class CategoryModel
     public static function add_Category($entity)
     {
         global $connection;
-
         $sql = "INSERT INTO categories 
         (categorie_name, create_at, update_at) 
          VALUES (:name,:create_at, :update_at)";
@@ -39,7 +38,6 @@ class CategoryModel
     public static function update_category($entity)
     {
         global $connection;
-
         $sql = "UPDATE categories SET 
         categorie_name = :name,
         update_at = :update_at,

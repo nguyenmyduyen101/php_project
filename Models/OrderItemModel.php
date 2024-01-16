@@ -21,7 +21,6 @@ function update_order_item($entity)
     $stmt->execute([
         ':order_item_id'         => $entity["order_item_id"],
         ':amount'       => $entity["amount"],
-        // Add other columns as needed
     ]);
 }
 function add_order_item($entity)
