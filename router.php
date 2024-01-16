@@ -3,6 +3,8 @@ require_once APP_ROOT . "/controllers/home/HomeController.php";
 require_once APP_ROOT . "/controllers/admin/Category/CategoryController.php";
 require_once APP_ROOT . "/controllers/admin/Order/OrderController.php";
 require_once APP_ROOT . "/controllers/admin/Product/ProductController.php";
+require_once APP_ROOT . "/controllers/account/LoginController.php";
+
 
 
 $uri = parse_url($_SERVER['REQUEST_URI']);
@@ -104,7 +106,10 @@ switch (strtolower($path) ?? '') {
     case strtolower(URL_ROOT . URL_SUBFOLDER . '/Admin/Product/update1'):
         ProductController::update1();
         break;
-
+    //Login
+    case strtolower(URL_ROOT . URL_SUBFOLDER . '/Account/Login'):
+        LoginController::index();
+        break;
 
     default:
         echo "khong tim thay trang";
