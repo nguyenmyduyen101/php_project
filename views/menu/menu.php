@@ -18,7 +18,7 @@
       <?php foreach($products as $product):?>
       <div class="col-xs-3 col-sm-3 col-md-3">
         <div class="card" style="width: 18rem;">
-          <img src=<?=URL_ROOT . URL_SUBFOLDER ."/assert/images/image_menu/card-1.jpg" ?> class="card-img-top" alt="image for this pizza" width="249px" height="270px">
+          <img src=<?=URL_ROOT . URL_SUBFOLDER . $product['image']?> class="card-img-top" alt="image for this pizza" width="249px" height="270px">
           <div class="card-body">
             <h5 class="card-title"><?=$product["product_name"]?></h5>
             <h6 style="color: #ff0000">Rs. <?=$product["product_price"]?>/-</h6>
