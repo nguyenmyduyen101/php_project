@@ -7,6 +7,8 @@ require_once APP_ROOT . "/controllers/admin/Product/ProductController.php";
 require_once APP_ROOT . "/controllers/account/LoginController.php";
 require_once APP_ROOT . "/controllers/account/SignUpController.php";
 require_once APP_ROOT . "/controllers/Order/OrderItemController.php";
+require_once APP_ROOT . "/controllers/product/UserProductController.php";
+
 
 
 
@@ -63,8 +65,8 @@ switch (strtolower($path) ?? '') {
         HomeController::index();
         break;
         //Menu
-    case strtolower(URL_ROOT . URL_SUBFOLDER . '/Menu'):
-        MenuController::index();
+    case strtolower(URL_ROOT . URL_SUBFOLDER . '/Products'):
+        UserProductController::index();
         break;
         //Category
     case strtolower(URL_ROOT . URL_SUBFOLDER . '/Admin/Category'):
