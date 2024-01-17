@@ -1,9 +1,15 @@
 <?php
 require_once APP_ROOT . "/controllers/home/HomeController.php";
+require_once APP_ROOT . "/controllers/Menu/MenuController.php";
 require_once APP_ROOT . "/controllers/admin/Category/CategoryController.php";
 require_once APP_ROOT . "/controllers/admin/Order/OrderController.php";
 require_once APP_ROOT . "/controllers/admin/Product/ProductController.php";
 require_once APP_ROOT . "/controllers/account/LoginController.php";
+require_once APP_ROOT . "/controllers/account/SignUpController.php";
+require_once APP_ROOT . "/controllers/Order/OrderItemController.php";
+
+
+
 
 
 
@@ -45,15 +51,20 @@ $routes = [
     URL_ROOT . URL_SUBFOLDER . '/Admin/Product/Insert' => APP_ROOT . '/controllers/admin/Product/insert.controller.php',
     URL_ROOT . URL_SUBFOLDER . '/Admin/Product/insert1' => APP_ROOT . '/controllers/admin/Product/insert1.controller.php',
 
-    URL_ROOT . URL_SUBFOLDER . '/Admin/Order' => APP_ROOT . '/controllers\admin\Order\order.controller.php',
+    URL_ROOT . URL_SUBFOLDER . '/Order' => APP_ROOT . '/controllers\admin\Order\order.controller.php',
     URL_ROOT . URL_SUBFOLDER . '/order/order_success' => APP_ROOT . '/controllers\Order\order_success.controller.php',
 
 
 ];
 switch (strtolower($path) ?? '') {
     case '':
+        //Home
     case strtolower(URL_ROOT . URL_SUBFOLDER . '/Home'):
         HomeController::index();
+        break;
+        //Menu
+    case strtolower(URL_ROOT . URL_SUBFOLDER . '/Menu'):
+        MenuController::index();
         break;
         //Category
     case strtolower(URL_ROOT . URL_SUBFOLDER . '/Admin/Category'):
@@ -106,11 +117,21 @@ switch (strtolower($path) ?? '') {
     case strtolower(URL_ROOT . URL_SUBFOLDER . '/Admin/Product/update1'):
         ProductController::update1();
         break;
-    //Login
+        //Login
     case strtolower(URL_ROOT . URL_SUBFOLDER . '/Account/Login'):
         LoginController::index();
         break;
-
+        //register
+    case strtolower(URL_ROOT . URL_SUBFOLDER . '/Account/SignUp'):
+        SignUpController::signup();
+        break;
+        //orderItem
+    case strtolower(URL_ROOT . URL_SUBFOLDER . '/Order'):
+        OrderItemController::index();
+        break;
+    case strtolower(URL_ROOT . URL_SUBFOLDER . '/order/order_success'):
+        OrderItemController::success();
+        break;
     default:
         echo "khong tim thay trang";
         break;

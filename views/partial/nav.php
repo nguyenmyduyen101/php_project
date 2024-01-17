@@ -12,8 +12,9 @@ $userId = 0;
     list-style-type: none;
   }
 
-  .form-login {
-    position: fixed;
+  .form-login,
+  .form-register {
+    position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
@@ -26,12 +27,20 @@ $userId = 0;
     background-color: #fff;
     border-radius: 10px;
     margin: 70px auto;
+  }
+
+  .form-login .model-container {
     height: 400px;
+  }
+
+  .form-register .model-container {
+    height: 700px;
+    margin: 50px auto;
   }
 </style>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <img src="<?= URL_ROOT . URL_SUBFOLDER ?>/assert/images/logo/logo.png" alt="Logo" width="50" height="50">
+  <img src="<?= URL_ROOT . URL_SUBFOLDER ?>/assets/images/logo/logo.png" alt="Logo" width="50" height="50">
   <a class="navbar-brand" href="index.php"><strong>MANITO</strong></a>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -92,7 +101,7 @@ $userId = 0;
 
     <div class="nav-buttons">
       <button onclick="show_login_form()" type="button" class="btn btn-success mx-2" style="background-color: #fff !important; color: #000 !important;" data-toggle="modal" data-target="#loginModal">Login</button>
-      <button type="button" class="btn btn-success mx-2" style="background-color: #fff !important; color: #000 !important;" data-toggle="modal" data-target="#signupModal">SignUp</button>
+      <button onclick="show_register_form()" type="button" class="btn btn-success mx-2" style="background-color: #fff !important; color: #000 !important;" data-toggle="modal" data-target="#signupModal">SignUp</button>
     </div>
   </div>
 </nav>
@@ -112,11 +121,11 @@ if (isset($_SESSION['error'])) {
       <h3 class="text-center mb-4" style="background-color: #E31837; color: white; padding: 10px;">Login Here</h3>
       <form action="<?= URL_ROOT . URL_SUBFOLDER . '/Account/Login' ?>" method="post">
         <div class="text-left my-2">
-          <b><label for="username">Username</label></b>
+          <b><label for="loginusername">Username</label></b>
           <input class="form-control" id="loginusername" name="username" placeholder="Enter Your Username" type="text" required>
         </div>
         <div class="text-left my-2">
-          <b><label for="password">Password</label></b>
+          <b><label for="loginpassword">Password</label></b>
           <input class="form-control" id="loginpassword" name="password" placeholder="Enter Your Password" type="password" required data-toggle="password">
         </div>
         <?php if (!empty($error)) : ?>
@@ -131,6 +140,59 @@ if (isset($_SESSION['error'])) {
   </div>
 </div>
 
+<div class="form-register" style="z-index: 999;">
+  <div class="model-container">
+    <div class="modal-body">
+      <h3 class="text-center mb-4" style="background-color: #E31837; color: white; padding: 10px;">Register</h3>
+      <form action="<?= URL_ROOT . URL_SUBFOLDER . '/Account/SignUp' ?>" method="post">
+        <div>
+
+          <div class="text-left my-2">
+            <b><label for="username">Username</label></b>
+            <input type="text" id="username" name="username" class="form-control" placeholder="Enter Your Username" required>
+          </div>
+
+          <div class="text-left my-2">
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" name="firstName" class="form-control" placeholder="Enter Your First Name" required>
+          </div>
+
+          <div class="text-left my-2">
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" name="lastName" class="form-control" placeholder="Enter Your Last Name" required>
+          </div>
+
+          <div class="text-left my-2">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" class="form-control" placeholder="Enter Your Email" required>
+          </div>
+
+          <div class="text-left my-2">
+            <label for="phone">Phone No:</label>
+            <input type="tel" id="phone" name="phone" class="form-control" placeholder="Enter Your Phone" required>
+          </div>
+
+          <div class="text-left my-2">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" class="form-control" placeholder="Enter Your Password" required>
+          </div>
+
+          <div class="text-left my-2">
+            <label for="confirmPassword">Confirm Password:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" placeholder="Enter Confirm Password" required>
+          </div>
+
+          
+          <div class="text-center my-4">
+          <input type="submit" value="Submit" class="btn btn-success" style="background-color: #E31837;">
+        </div>
+        </div>
+      </form>
+      <p>Already have an account? <a href="login.html">Login here</a></p>
+    </div>
+  </div>
+</div>
+
 <script>
   function show_list_categories() {
     const list_categories = document.getElementById("list_categories");
@@ -138,10 +200,14 @@ if (isset($_SESSION['error'])) {
   }
   const form_login = document.querySelector(".form-login");
   form_login.classList.add("d-none")
+  const form_register = document.querySelector(".form-register");
+  form_register.classList.add("d-none")
 
   function show_login_form() {
     form_login.classList.remove("d-none");
-    console.log(form_login);
+  }
 
+  function show_register_form() {
+    form_register.classList.remove("d-none");
   }
 </script>

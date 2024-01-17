@@ -28,7 +28,7 @@ class LoginController
                     if ($row["user_type"] == 1) {
                         header("location: " . URL_ROOT . URL_SUBFOLDER . '/Admin/Category');
                     } else {
-                        header("location: " . URL_ROOT . URL_SUBFOLDER . '/');
+                        header("location: " . URL_ROOT . URL_SUBFOLDER . '/Home');
                     }
                     exit();
                 } else {
