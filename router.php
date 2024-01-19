@@ -2,7 +2,6 @@
 $uri = parse_url($_SERVER['REQUEST_URI']);
 $path = rtrim($uri['path'], '/');
 $queryParams = $uri['query'] ?? '';
-
 $routes = [
     URL_ROOT . URL_SUBFOLDER . '/' => APP_ROOT . '/controllers/home/index.controller.php',
     URL_ROOT . URL_SUBFOLDER . '/home' => APP_ROOT . '/controllers/home/index.controller.php',
@@ -34,10 +33,14 @@ $routes = [
     URL_ROOT . URL_SUBFOLDER . '/Admin/Product/Insert' => APP_ROOT . '/controllers/admin/Product/insert.controller.php',
     URL_ROOT . URL_SUBFOLDER . '/Admin/Product/insert1' => APP_ROOT . '/controllers/admin/Product/insert1.controller.php',
     
-    
     URL_ROOT . URL_SUBFOLDER . '/Admin/Order' => APP_ROOT . '/controllers\admin\Order\order.controller.php',
     URL_ROOT . URL_SUBFOLDER . '/addToCart' => APP_ROOT . '/controllers/Cart/addToCart.controller.php',
     URL_ROOT . URL_SUBFOLDER . '/carts' => APP_ROOT . '/controllers/Cart/index.controller.php',
+    URL_ROOT . URL_SUBFOLDER . '/carts/Delete' => APP_ROOT . '/controllers/admin/Cart/deleteCart.controller.php',
+    URL_ROOT . URL_SUBFOLDER . '/Cart/updateCart' => APP_ROOT . '/controllers/Cart/updateCart.controller.php',
+    URL_ROOT . URL_SUBFOLDER . '/Cart/deleteCart' => APP_ROOT . '/controllers/Cart/deleteCart.controller.php',
+    URL_ROOT . URL_SUBFOLDER . '/Product/detail' => APP_ROOT . '/controllers/product/detail.controller.php',
+
 
 ];
 

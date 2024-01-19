@@ -1,36 +1,23 @@
 <?php
 
-function get_product_by_category_id($category_id){
-    global $connection;
-    $sql = "SELECT * FROM products where product_categorie_id = :category_id";
-    $stmt = $connection -> prepare($sql);
-    $stmt -> execute([
-        ":category_id" => $category_id,
-    ]);
-    $result = $stmt -> fetchAll(PDO::FETCH_ASSOC);
-    return $result;
-}
+// function get_all_products()
+// {
+//     global $connection;
+//     $sql = "SELECT * FROM products";
+//     $stmt = $connection->prepare($sql);
+//     $stmt->execute();
+//     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+//     return $result;
+// }
 
-
-function get_all_products()
-{
-    global $connection;
-    $sql = "SELECT * FROM products";
-    $stmt = $connection -> prepare($sql);
-    $stmt -> execute();
-    $result = $stmt -> fetchAll(PDO::FETCH_ASSOC);
-    return $result;
-}
 function addToCart($entity)
 {
     global $connection;
 
-    $sql = "INSERT INTO carts (user_id, product_id) VALUES ( :user_id)";
+    $sql = "INSERT INTO carts (user_id) VALUES ( :user_id)";
     $stmt = $connection->prepare($sql);
     $iSuccess = $stmt->execute([
-        ':user_id' => $entity['user_id'],
-        ':product_id' => $entity['product_id']
-        
+        ':user_id' => $entity['user_id']
     ]);
     if ($iSuccess) {
         $cartId = $connection->lastInsertId();
@@ -40,68 +27,72 @@ function addToCart($entity)
     }
 }
 
-    function get_product($id)
-    {
-        global $connection;
-
-        $sql = "SELECT * FROM products where id  = :id LIMIT 1";
-        $stmt = $connection -> prepare($sql);
-        $stmt -> execute([
-            ':id' => $id,
-        ]);
-        $result = $stmt -> fetch(PDO::FETCH_ASSOC);
-        return $result;
-    }
-     function update_product($entity)
-    {
+function addToCartItem($entity)
+{
     global $connection;
 
-    $sql = "UPDATE products SET 
-    product_name = :product_name,
-    product_price = :product_price,
-    product_categorie_id = :product_categorie_id
+    $sql = "INSERT INTO cart_items (cart_id, product_id, price, quantity) VALUES ( :cart_id, :product_id, :price, :quantity)";
+    $stmt = $connection->prepare($sql);
+    $iSuccess = $stmt->execute([
+        ':cart_id' => $entity['cart_id'],
+        ':product_id' => $entity['product_id'],
+        ':price' => $entity['price'],
+        ':quantity' => $entity['quantity']
+    ]);
+    return $iSuccess;
+}
+
+function get_cart($userId)
+{
+    global $connection;
+
+    $sql = "SELECT * FROM carts where user_id  = :user_id LIMIT 1";
+    $stmt = $connection->prepare($sql);
+    $stmt->execute([
+        ':user_id' => $userId,
+    ]);
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    return $result;
+}
+
+function get_cart_items($cartId)
+{   
+    global $connection;
+
+    $sql = "SELECT ci.*, p.product_name 
+            FROM cart_items ci
+            JOIN products p ON ci.product_id = p.id
+            WHERE ci.cart_id = :cart_id";
+    
+    $stmt = $connection->prepare($sql);
+    $stmt->execute([
+        ':cart_id' => $cartId,
+    ]);
+    
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $result;
+}
+
+function update_cart_item($entity)
+{
+    global $connection;
+
+    $sql = "UPDATE cart_items SET 
+    quantity = :quantity
     WHERE id = :id";
 
     $stmt = $connection->prepare($sql);
     $stmt->execute([
-    ':product_name' => $entity["product_name"],
-    ':product_price' => $entity['product_price'],
-    ':product_categorie_id' => $entity['product_categorie_id'],
-    ':id' => $entity['id'] // Assuming 'id' is part of your entity array
-    // Add other columns as needed
+        ':quantity' => $entity["quantity"],
+        ':id' => $entity['id']
     ]);
-    }
-    function remove_product($id)
-    {
-        global $connection;
-        $sql = "DELETE FROM products WHERE id = :id";
-        $stmt = $connection -> prepare($sql);
-        $stmt -> execute([
-            ':id' => $id,
-        ]);
-    }
-
-    function update_Cart($entity)
-    {
+}
+function remove_cart_item($id)
+{
     global $connection;
-
-    $sql = "UPDATE carts SET 
-    quantity = :quantity,
-    WHERE product_id = :product_id";
-
+    $sql = "DELETE FROM cart_items WHERE id = :id";
     $stmt = $connection->prepare($sql);
     $stmt->execute([
-    ':quantity' => $entity["quantity"],
-    ':product_id' => $entity['product_id'] // Assuming 'id' is part of your entity array
-    // Add other columns as needed
+        ':id' => $id,
     ]);
-    }
-    function remove_Cart($id)
-    {
-        global $connection;
-        $sql = "DELETE FROM carts WHERE product_id = :product_id";
-        $stmt = $connection -> prepare($sql);
-        $stmt -> execute([
-            ':product_id' => $id,
-        ]);
-    }
+}

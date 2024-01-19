@@ -1,9 +1,12 @@
-<?php   
-session_start();
 
+<?php 
+session_start();
 require_once APP_ROOT ."/Models/Cart.model.php";
-$cart_id = $_POST['itemId'];
-$entity= [
-    'id'=> $cart_id,
-];
-$result= remove_Cart($entity);
+
+$cart_item_id = $_GET['itemId'];
+
+remove_cart_item($cart_item_id);
+
+header("Location: /".URL_SUBFOLDER ."/carts");
+
+return;

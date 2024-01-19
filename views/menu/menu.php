@@ -25,11 +25,12 @@
             <h6 style="color: #ff0000">Rs. <?=$product["product_price"]?>/-</h6>
             <p class="card-text">Pepper Barbecue Chicken I Che...</p>
             <div class="row justify-content-center">
-            <form  action=<?="/" . URL_ROOT . URL_SUBFOLDER . "/addToCart" ?> method="post">
+            <form  action=<?="/" . URL_SUBFOLDER . "/addToCart" ?> method="post">
               <input type="hidden" name="product_id" value="<?=$product["id"]?>">
+              <input type="hidden" name="cart_id" value="<?= $cart ? $cart["id"] : ''?>">
               <button class="btn btn-primary mx-2"  type="submit">Add to Cart</button>
             </form>
-            <a href="viewPizza.php?pizzaid=13" class="mx-2"><button class="btn btn-primary">Quick View</button></a>
+            <a href="<?= "/" . URL_SUBFOLDER . "/Product/detail?itemId=" . $product["id"]?>" class="mx-2"><button class="btn btn-primary">Quick View</button></a>
           </div>
           </div>
         </div>

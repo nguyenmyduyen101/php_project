@@ -1,23 +1,30 @@
 <?php
 session_start();
 
-require_once APP_ROOT ."/Models/Cart.model.php";
+require_once APP_ROOT . "/Models/Cart.model.php";
+require_once APP_ROOT . "/Models/Product.model.php";
+$cartId = $_POST['cart_id'];
 
-$entityCart = [ 'user_id' => $_SESSION['userId'] ?? 1];
+if (empty($cartId)) {
+    $entityCart = [
+        'user_id' => $_SESSION['userId'] ?? 1
+    ];
+    $cartId = addToCart($entityCart);
+}
 
+$productId = $_POST['product_id'];
 
-$cartId = addToCart($entityCart);
+$product = get_product($productId);
 
 $entityCartItem = [
-    'cart_id'=> $cartId,
-    'product_id' => $_GET['category_id']
-
+    'cart_id' => $cartId,
+    'product_id' => $productId,
+    'price' => $product['product_price'],
+    'quantity' => 1
 ];
-$entityCartItem= addToCart($entityCartItem);
 
+$entityCartItem = addToCartItem($entityCartItem);
 
-header("Location: /".URL_SUBFOLDER ."/carts");
+header("Location: /" . URL_SUBFOLDER . "/carts");
 
 return;
-
-?>
