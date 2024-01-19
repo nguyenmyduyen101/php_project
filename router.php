@@ -22,6 +22,9 @@ $routes = [
 
     URL_ROOT . URL_SUBFOLDER . '/Menu' => APP_ROOT . '/controllers/menu/index.controller.php',
     URL_ROOT . URL_SUBFOLDER . '/Products' => APP_ROOT . '/controllers/product/index.controller.php',
+    URL_ROOT . URL_SUBFOLDER . "/Checkout" => APP_ROOT . '/controllers/Checkout/checkout.controller.php',
+    URL_ROOT . URL_SUBFOLDER . "/CheckoutPost" => APP_ROOT . '/controllers/Checkout/CheckoutPost.controller.php',
+    URL_ROOT . URL_SUBFOLDER . "/Order" => APP_ROOT . '/controllers/Order/order.controller.php',
 
     URL_ROOT . URL_SUBFOLDER . '/Admin/Product' => APP_ROOT . '/controllers/admin/Product/index.controller.php',
     URL_ROOT . URL_SUBFOLDER . '/Admin/Product/Create' => APP_ROOT . '/controllers/admin/Product/create.controller.php',
@@ -34,14 +37,14 @@ $routes = [
     URL_ROOT . URL_SUBFOLDER . '/Admin/Product/insert1' => APP_ROOT . '/controllers/admin/Product/insert1.controller.php',
     
     URL_ROOT . URL_SUBFOLDER . '/Admin/Order' => APP_ROOT . '/controllers\admin\Order\order.controller.php',
+    URL_ROOT . URL_SUBFOLDER . '/order/order_success' => APP_ROOT . '/controllers\Order\order_success.controller.php',
+
     URL_ROOT . URL_SUBFOLDER . '/addToCart' => APP_ROOT . '/controllers/Cart/addToCart.controller.php',
     URL_ROOT . URL_SUBFOLDER . '/carts' => APP_ROOT . '/controllers/Cart/index.controller.php',
     URL_ROOT . URL_SUBFOLDER . '/carts/Delete' => APP_ROOT . '/controllers/admin/Cart/deleteCart.controller.php',
     URL_ROOT . URL_SUBFOLDER . '/Cart/updateCart' => APP_ROOT . '/controllers/Cart/updateCart.controller.php',
     URL_ROOT . URL_SUBFOLDER . '/Cart/deleteCart' => APP_ROOT . '/controllers/Cart/deleteCart.controller.php',
     URL_ROOT . URL_SUBFOLDER . '/Product/detail' => APP_ROOT . '/controllers/product/detail.controller.php',
-
-
 ];
 
 // echo json_encode($routes);

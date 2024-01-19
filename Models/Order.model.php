@@ -1,35 +1,47 @@
-<?php 
-function get_order_by_user_id($user_id){
+<?php
+function get_order_by_user_id($user_id)
+{
     global $connection;
     $sql = "SELECT * FROM orders where user_id = :user_id";
-    $stmt = $connection -> prepare($sql);
-    $stmt -> execute([
+    $stmt = $connection->prepare($sql);
+    $stmt->execute([
         ":user_id" => $user_id
     ]);
-    $result = $stmt -> fetchAll(PDO::FETCH_ASSOC);
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return $result;
 }
-function get_all_orders(){
+function get_all_orders()
+{
     global $connection;
     $sql = "SELECT * FROM orders";
-    $stmt = $connection -> prepare($sql);
-    $stmt -> execute();
-    $result = $stmt -> fetchAll(PDO::FETCH_ASSOC);
+    $stmt = $connection->prepare($sql);
+    $stmt->execute();
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return $result;
 }
-function get_order($id){
+function get_order($id)
+{
     global $connection;
     $sql = "SELECT * FROM orders where id =:id";
-    $stmt = $connection -> prepare($sql);
-    $stmt -> execute([
+    $stmt = $connection->prepare($sql);
+    $stmt->execute([
         ":id" => $id
     ]);
-    $result = $stmt -> fetch(PDO::FETCH_ASSOC);
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    return $result;
+}
+function get_last_order()
+{
+    global $connection;
+    $sql = "SELECT * FROM orders ORDER BY id DESC LIMIT 1;";
+    $stmt = $connection->prepare($sql);
+    $stmt->execute();
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
     return $result;
 }
 function update_order($entity)
 {
-global $connection;
+    global $connection;
 
     $sql = "UPDATE orders SET 
     user_id = :user_id,   
@@ -42,8 +54,8 @@ global $connection;
     create_at = :create_at,
     update_at = :update_at
     WHERE id = :id";
-    $stmt = $connection-> prepare($sql);
-    $stmt -> execute([
+    $stmt = $connection->prepare($sql);
+    $stmt->execute([
         ':id'         => $entity["id"],
         ':user_id'         => $entity["user_id"],
         ':address'         => $entity["address"],
@@ -52,17 +64,33 @@ global $connection;
         ':amount'       => $entity["amount"],
         ':payment_mode'       => $entity["payment_mode"],
         ':order_status'       => $entity["order_status"],
-        ':create_at' => $entity["create_at"] ? $entity["create_at"] -> format('Y-m-d H:i:s') : null,
-        ':update_at' => $entity["update_at"] ? $entity["update_at"] -> format('Y-m-d H:i:s') : null,
+        ':create_at' => $entity["create_at"] ? $entity["create_at"]->format('Y-m-d H:i:s') : null,
+        ':update_at' => $entity["update_at"] ? $entity["update_at"]->format('Y-m-d H:i:s') : null,
         // Add other columns as needed
     ]);
 }
 function remove_order($id)
-    {
-        global $connection;
-        $sql = "DELETE FROM orders WHERE id = :id";
-        $stmt = $connection -> prepare($sql);
-        $stmt -> execute([
-            ':id' => $id,
-        ]);
-    }
+{
+    global $connection;
+    $sql = "DELETE FROM orders WHERE id = :id";
+    $stmt = $connection->prepare($sql);
+    $stmt->execute([
+        ':id' => $id,
+    ]);
+}
+
+function add_order($entity)
+{
+    global $connection;
+
+    $sql = "INSERT INTO orders 
+        (user_id, address, amount) 
+        VALUES ( :user_id, :address, :amount)";
+    $stmt = $connection->prepare($sql);
+    $stmt->execute([
+        ':user_id' => $entity['user_id'],
+        ':address' => $entity['address'],
+        ':amount' => $entity['amount'],
+
+    ]);
+}

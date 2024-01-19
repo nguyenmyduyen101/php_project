@@ -1,15 +1,5 @@
 <?php
 
-// function get_all_products()
-// {
-//     global $connection;
-//     $sql = "SELECT * FROM products";
-//     $stmt = $connection->prepare($sql);
-//     $stmt->execute();
-//     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-//     return $result;
-// }
-
 function addToCart($entity)
 {
     global $connection;
@@ -56,19 +46,19 @@ function get_cart($userId)
 }
 
 function get_cart_items($cartId)
-{   
+{
     global $connection;
 
     $sql = "SELECT ci.*, p.product_name 
             FROM cart_items ci
             JOIN products p ON ci.product_id = p.id
             WHERE ci.cart_id = :cart_id";
-    
+
     $stmt = $connection->prepare($sql);
     $stmt->execute([
         ':cart_id' => $cartId,
     ]);
-    
+
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return $result;
 }
@@ -95,4 +85,16 @@ function remove_cart_item($id)
     $stmt->execute([
         ':id' => $id,
     ]);
+}
+
+function get_cart_by_user_id($user_id)
+{
+    global $connection;
+    $sql = "SELECT * FROM cart where user_id = :user_id";
+    $stmt = $connection->prepare($sql);
+    $stmt->execute([
+        ":user_id" => $user_id
+    ]);
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $result;
 }
