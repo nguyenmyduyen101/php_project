@@ -2,10 +2,9 @@
 $uri = parse_url($_SERVER['REQUEST_URI']);
 $path = rtrim($uri['path'], '/');
 $queryParams = $uri['query'] ?? '';
-
 $routes = [
     URL_ROOT . URL_SUBFOLDER . '/' => APP_ROOT . '/controllers/home/index.controller.php',
-    URL_ROOT . URL_SUBFOLDER . '/Home' => APP_ROOT . '/controllers/home/index.controller.php',
+    URL_ROOT . URL_SUBFOLDER . '/home' => APP_ROOT . '/controllers/home/index.controller.php',
     URL_ROOT . URL_SUBFOLDER . '/Admin/Category' => APP_ROOT . '/controllers/admin/Category/index.controller.php',
     URL_ROOT . URL_SUBFOLDER . '/Admin/Category/Create' => APP_ROOT . '/controllers/admin/Category/create.controller.php',
     URL_ROOT . URL_SUBFOLDER . '/Admin/Category/CreatePost' => APP_ROOT . '/controllers/admin/Category/createPost.controller.php',
@@ -40,8 +39,16 @@ $routes = [
     URL_ROOT . URL_SUBFOLDER . '/Admin/Order' => APP_ROOT . '/controllers\admin\Order\order.controller.php',
     URL_ROOT . URL_SUBFOLDER . '/order/order_success' => APP_ROOT . '/controllers\Order\order_success.controller.php',
 
-
+    URL_ROOT . URL_SUBFOLDER . '/addToCart' => APP_ROOT . '/controllers/Cart/addToCart.controller.php',
+    URL_ROOT . URL_SUBFOLDER . '/carts' => APP_ROOT . '/controllers/Cart/index.controller.php',
+    URL_ROOT . URL_SUBFOLDER . '/carts/Delete' => APP_ROOT . '/controllers/admin/Cart/deleteCart.controller.php',
+    URL_ROOT . URL_SUBFOLDER . '/Cart/updateCart' => APP_ROOT . '/controllers/Cart/updateCart.controller.php',
+    URL_ROOT . URL_SUBFOLDER . '/Cart/deleteCart' => APP_ROOT . '/controllers/Cart/deleteCart.controller.php',
+    URL_ROOT . URL_SUBFOLDER . '/Product/detail' => APP_ROOT . '/controllers/product/detail.controller.php',
 ];
+
+// echo json_encode($routes);
+// return;
 if (array_key_exists($path, $routes)) {
     require $routes[$path];
 } else {

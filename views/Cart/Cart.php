@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -8,8 +9,8 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <title>Cart</title>
 </head>
+
 <body>
-<form action="/php_project/views/home/index.php" method="POST" class="form_signup">
     <div class="container" id="cont">
         <div class="row">
             <div class="col-lg-12 text-center border rounded bg-light my-3">
@@ -24,120 +25,31 @@
                                 <th scope="col">Item Name</th>
                                 <th scope="col">Item Price</th>
                                 <th scope="col">Quantity</th>
-                                <th scope="col">Total Price</th>
                                 <th scope="col">
-                                    <form action="../../controllers/Cart/Cart_controller.php" method="POST">
-                                        <button name="removeAllItem" class="btn btn-sm btn-outline-danger">Remove All</button>
-                                        <input type="hidden" name="userId" value="2">
-                                    </form>
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Classic Hand Tossed</td>
-                                <td>249</td>
-                                <td>
-                                    <form id="frm43">
-                                        <input type="hidden" name="pizzaId" value="43">
-                                        <input type="number" name="quantity" value="1" class="text-center" onchange="updateCart(43)" onkeyup="return false" style="width:60px" min=1 oninput="check(this)" onClick="this.select();">
-                                    </form>
-                                </td>
-                                <td>249</td>
-                                <td>
-                                    <form action="../../controllers/Cart/Cart_controller.php" method="POST">
-                                        <button name="removeItem" class="btn btn-sm btn-outline-danger">Remove</button>
-                                        <input type="hidden" name="itemId" value="43">
-                                    </form>
-                                </td>
-                            </tr><tr>
-                                <td>2</td>
-                                <td>Wheat Thin Crust</td>
-                                <td>299</td>
-                                <td>
-                                    <form id="frm44">
-                                        <input type="hidden" name="pizzaId" value="44">
-                                        <input type="number" name="quantity" value="1" class="text-center" onchange="updateCart(44)" onkeyup="return false" style="width:60px" min=1 oninput="check(this)" onClick="this.select();">
-                                    </form>
-                                </td>
-                                <td>299</td>
-                                <td>
-                                    <form action="../../controllers/Cart/Cart_controller.php" method="POST">
-                                        <button name="removeItem" class="btn btn-sm btn-outline-danger">Remove</button>
-                                        <input type="hidden" name="itemId" value="44">
-                                    </form>
-                                </td>
-                            </tr><tr>
-                                <td>3</td>
-                                <td>Veg Pasta Italiano White</td>
-                                <td>99</td>
-                                <td>
-                                    <form id="frm31">
-                                        <input type="hidden" name="pizzaId" value="31">
-                                        <input type="number" name="quantity" value="1" class="text-center" onchange="updateCart(31)" onkeyup="return false" style="width:60px" min=1 oninput="check(this)" onClick="this.select();">
-                                    </form>
-                                </td>
-                                <td>99</td>
-                                <td>
-                                    <form action="../../controllers/Cart/Cart_controller.php" method="POST">
-                                        <button name="removeItem" class="btn btn-sm btn-outline-danger">Remove</button>
-                                        <input type="hidden" name="itemId" value="31">
-                                    </form>
-                                </td>
-                            </tr><tr>
-                                <td>4</td>
-                                <td>Non Veg Pasta Italiano White</td>
-                                <td>99</td>
-                                <td>
-                                    <form id="frm32">
-                                        <input type="hidden" name="pizzaId" value="32">
-                                        <input type="number" name="quantity" value="1" class="text-center" onchange="updateCart(32)" onkeyup="return false" style="width:60px" min=1 oninput="check(this)" onClick="this.select();">
-                                    </form>
-                                </td>
-                                <td>99</td>
-                                <td>
-                                    <form action="../../controllers/Cart/Cart_controller.php" method="POST">
-                                        <button name="removeItem" class="btn btn-sm btn-outline-danger">Remove</button>
-                                        <input type="hidden" name="itemId" value="32">
-                                    </form>
-                                </td>
-                            </tr><tr>
-                                <td>5</td>
-                                <td>Butterscotch Mousse Cake</td>
-                                <td>149</td>
-                                <td>
-                                    <form id="frm36">
-                                        <input type="hidden" name="pizzaId" value="36">
-                                        <input type="number" name="quantity" value="1" class="text-center" onchange="updateCart(36)" onkeyup="return false" style="width:60px" min=1 oninput="check(this)" onClick="this.select();">
-                                    </form>
-                                </td>
-                                <td>149</td>
-                                <td>
-                                    <form action="../../controllers/Cart/Cart_controller.php" method="POST">
-                                        <button name="removeItem" class="btn btn-sm btn-outline-danger">Remove</button>
-                                        <input type="hidden" name="itemId" value="36">
-                                    </form>
-                                </td>
-                            </tr><tr>
-                                <td>6</td>
-                                <td>Lava Cake</td>
-                                <td>99</td>
-                                <td>
-                                    <form id="frm35">
-                                        <input type="hidden" name="pizzaId" value="35">
-                                        <input type="number" name="quantity" value="1" class="text-center" onchange="updateCart(35)" onkeyup="return false" style="width:60px" min=1 oninput="check(this)" onClick="this.select();">
-                                    </form>
-                                </td>
-                                <td>99</td>
-                                <td>
-                                    <form action="../../controllers/Cart/Cart_controller.php" method="POST">
-                                        <button name="removeItem" class="btn btn-sm btn-outline-danger">Remove</button>
-                                        <input type="hidden" name="itemId" value="35">
-                                    </form>
-                                </td>
-                            </tr>                        
+                            <?php foreach ($cartItems as $item) : ?>
+                                <form action="<?= "/" . URL_SUBFOLDER . "/Cart/updateCart" ?>" method="post">
+                                    <tr>
+                                        <td><?= $item['id'] ?></td>
+                                        <td><?= $item['product_name'] ?></td>
+                                        <td><?= $item['price'] ?></td>
+                                        <td>
+                                            <input type="hidden" name="cart_item_id" value="<?= $item['id'] ?>">
+                                            <input type="number" name="quantity" value="<?= $item['quantity'] ?>" class="text-center" style="width:60px" min="1">
+                                        </td>
+                                        <td>
+                                            <a href="<?= "/" . URL_SUBFOLDER . "/Cart/deleteCart?itemId=" . $item['id'] ?>" class="btn btn-sm btn-outline-danger">Remove</a>
+                                            <input type="hidden" name="cart_item_id" value="<?= $item['id'] ?>">
+                                            <button name="updateItem" class="btn btn-sm btn-outline-danger" type="submit">Update</button>
+                                        </td>
+                                    </tr>
+                                </form>
+                            <?php endforeach; ?>
                         </tbody>
+
                     </table>
                 </div>
             </div>
@@ -151,9 +63,11 @@
                             <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3 bg-light">
                                 <div>
                                     <strong>The total amount of</strong>
-                                    <strong><p class="mb-0">(including Tax & Charge)</p></strong>
+                                    <strong>
+                                        <p class="mb-0">(including Tax & Charge)</p>
+                                    </strong>
                                 </div>
-                                <span><strong>122.000</strong></span>
+                                <span><strong>122.000</strong></span>   
                             </li>
                         </ul>
                         <div class="form-check">
@@ -165,7 +79,7 @@
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
                             <label class="form-check-label" for="flexRadioDefault1">
-                            Online Payment
+                                Online Payment
                             </label>
                         </div><br>
                         <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#checkoutModal">go to checkout</button>
@@ -176,8 +90,7 @@
                         <div class="collapse" id="collapseExample">
                             <div class="mt-3">
                                 <div class="md-form md-outline mb-0">
-                                    <input type="text" id="discount-code" class="form-control font-weight-light"
-                                    placeholder="Enter discount code">
+                                    <input type="text" id="discount-code" class="form-control font-weight-light" placeholder="Enter discount code">
                                 </div>
                             </div>
                         </div>
@@ -187,4 +100,5 @@
         </div>
     </div>
 </body>
+
 </html>
