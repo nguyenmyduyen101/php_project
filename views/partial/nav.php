@@ -56,7 +56,6 @@ $userId = 0;
         $database = "test_data_project";
         $username = "root";
         $password = "";
-
         $dsn = "mysql:host=$hostname;dbname=$database;charset=utf8mb4";
 
         try {
@@ -76,10 +75,8 @@ $userId = 0;
             <div class="dropdown-divider"></div>
           <?php endforeach ?>
 
-
         </div>
       </li>
-
       <li class="nav-item">
         <a class="nav-link">Your Orders</a>
       </li>
@@ -93,7 +90,7 @@ $userId = 0;
       <button class="btn btn-outline-success my-2 my-sm-0 text-white border-white" type="submit">Search</button>
     </form>
 
-    <a href="viewCart.php" class="btn btn-secondary mx-2" title="MyCart">
+    <a href=<?= URL_ROOT . URL_SUBFOLDER . "/Carts" ?> class="btn btn-secondary mx-2" title="MyCart">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
         <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
       </svg>
@@ -182,10 +179,10 @@ if (isset($_SESSION['error'])) {
             <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" placeholder="Enter Confirm Password" required>
           </div>
 
-          
+
           <div class="text-center my-4">
-          <input type="submit" value="Submit" class="btn btn-success" style="background-color: #E31837;">
-        </div>
+            <input type="submit" value="Submit" class="btn btn-success" style="background-color: #E31837;">
+          </div>
         </div>
       </form>
       <p>Already have an account? <a href="login.html">Login here</a></p>

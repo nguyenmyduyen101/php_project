@@ -10,9 +10,9 @@ class OrderController
         $orders_in_db = OrderModel::get_all_orders();
         $orders = [];
         foreach ($orders_in_db as $order) {
-            $order_item =  get_order_item_by_order_id($order["id"]);
+            $order_item =  OrderItemModel::get_order_item_by_order_id($order["id"]);
             $product = ProductModel::get_product($order_item["product_id"]);
-            $user = get_user($order["user_id"]);
+            $user = UserModel::get_user($order["user_id"]);
             $obj = [
                 "order" => $order,
                 "product" => $product,

@@ -1,13 +1,4 @@
 <div>
-    <div class="header1">
-        <div>
-            <h2>Order</h2>
-            <h2>Iterm</h2>
-        </div>
-        <button onclick="handleClick()">X</button>
-    </div>
-    </hr>
-
     <div class="row">
         <div class="col-sm-1"></div>
         <div class="col-sm-10">
@@ -17,26 +8,41 @@
             </div>
         </div>
         <div class="col-sm-1"></div>
-    </div> 
+    </div>
 
     <div class="container">
-        <?php foreach($carts as $cart):?>
-        <div class="row">
-            <div class="col-sm-5 d-flex">
-                <img src="../../image/Pizza1.jpg" alt="Product Image" class="product-img">
-                <div class="product-info">
-                    <h2><?= $cart["product"]["product_name"]?></h2>
-                    <p style="color: #E31837;">Rs.<?= $cart["product"]["product_price"]?>/-</p>
-                </div>
-            </div>
-            <div class="col-sm-7 text-center mt-5">
-                <input type="number" name="order[amount][]" class="quantity" value=<?= $cart["cart"]["item_quantity"]?> />
-                <input hidden name="order[product_id][]     " value=<?= $cart["cart"]["product_id"]?> />
-            </div>
-        </div>
-        <?php endforeach?>
-        <input hidden name="user_id" value=<?=$user_id?>>
-
+        <table class="table text-center">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">No.</th>
+                    <th scope="col">Item Name</th>
+                    <th scope="col">Item Price</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($cartItems as $item) : ?>
+                    <form action="<?= "/" . URL_SUBFOLDER . "/Cart/updateCart" ?>" method="post">
+                        <tr>
+                            <td><?= $item['id'] ?></td>
+                            <td><?= $item['product_name'] ?></td>
+                            <td><?= $item['price'] ?></td>
+                            <td>
+                                <input type="hidden" name="cart_item_id" value="<?= $item['id'] ?>">
+                                <input type="number" name="quantity" value="<?= $item['quantity'] ?>" class="text-center" style="width:60px" min="1">
+                            </td>
+                            <td>
+                                <a href="<?= "/" . URL_SUBFOLDER . "/carts/Delete?itemId=" . $item['id'] ?>" class="btn btn-sm btn-outline-danger">Remove</a>
+                                <input type="hidden" name="cart_item_id" value="<?= $item['id'] ?>">
+                                <button name="updateItem" class="btn btn-sm btn-outline-danger" type="submit">Update</button>
+                            </td>
+                        </tr>
+                    </form>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>

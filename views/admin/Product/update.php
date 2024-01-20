@@ -18,7 +18,7 @@ input{
     margin: 10px;
 }
 #form-upsert-product {
-        width: 100%; /* Điều chỉnh độ rộng của form theo mong muốn của bạn */
+        width: 100%; /* Điều chỉnh độ rộng của form  */
         padding: 20px;
     }
 </style>
@@ -30,7 +30,6 @@ input{
     <div class="card-header bg-secondary bg-gradient ml-0 py-3">
     <div class="row">
         <div class="col-12 text-center">
-            
                 <h2 class="text-white py-2">UPDATE PRODUCT</h2>
         </div>
     </div>

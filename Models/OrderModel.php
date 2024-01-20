@@ -67,7 +67,6 @@ class OrderModel{
             ':order_status'       => $entity["order_status"],
             ':create_at' => $entity["create_at"] ? $entity["create_at"]->format('Y-m-d H:i:s') : null,
             ':update_at' => $entity["update_at"] ? $entity["update_at"]->format('Y-m-d H:i:s') : null,
-            // Add other columns as needed
         ]);
     }
     public static function remove_order($id)
@@ -83,16 +82,15 @@ class OrderModel{
     public static function add_order($entity)
     {
         global $connection;
-    
         $sql = "INSERT INTO orders 
-            (user_id, address, amount) 
-            VALUES ( :user_id, :address, :amount)";
+            (user_id, address, amount,phone_no) 
+            VALUES ( :user_id, :address, :amount,:phone_no)";
         $stmt = $connection->prepare($sql);
         $stmt->execute([
             ':user_id' => $entity['user_id'],
             ':address' => $entity['address'],
             ':amount' => $entity['amount'],
-    
+            ':phone_no'=> $entity['phone_no'],
         ]);
     }
     
