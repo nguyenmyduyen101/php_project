@@ -41,7 +41,7 @@
                                             <input type="number" name="quantity" value="<?= $item['quantity'] ?>" class="text-center" style="width:60px" min="1">
                                         </td>
                                         <td>
-                                            <a href="<?= "/" . URL_SUBFOLDER . "/Cart/deleteCart?itemId=" . $item['id'] ?>" class="btn btn-sm btn-outline-danger">Remove</a>
+                                            <a href="<?= "/" . URL_SUBFOLDER . "/carts/Delete?itemId=" . $item['id'] ?>" class="btn btn-sm btn-outline-danger">Remove</a>
                                             <input type="hidden" name="cart_item_id" value="<?= $item['id'] ?>">
                                             <button name="updateItem" class="btn btn-sm btn-outline-danger" type="submit">Update</button>
                                         </td>
@@ -58,8 +58,8 @@
                     <div class="pt-4 border bg-light rounded p-3">
                         <h5 class="mb-3 text-uppercase font-weight-bold text-center">Order summary</h5>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0 bg-light">Total Price<span>122.000</span></li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center px-0 bg-light">Shipping<span>123.000</span></li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0 bg-light">Total Price<span><?= $total_price?></span></li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center px-0 bg-light">Shipping<span>0.000</span></li>
                             <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3 bg-light">
                                 <div>
                                     <strong>The total amount of</strong>
@@ -67,7 +67,7 @@
                                         <p class="mb-0">(including Tax & Charge)</p>
                                     </strong>
                                 </div>
-                                <span><strong>122.000</strong></span>   
+                                <span><strong><?= $total_price?></strong></span>   
                             </li>
                         </ul>
                         <div class="form-check">
@@ -82,7 +82,7 @@
                                 Online Payment
                             </label>
                         </div><br>
-                        <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#checkoutModal">go to checkout</button>
+                        <a href="<?=URL_ROOT . URL_SUBFOLDER . "/order"?>" class="btn btn-primary btn-block" data-toggle="modal" data-target="#checkoutModal">go to checkout</a>
                     </div>
                 </div>
                 <div class="mb-3">

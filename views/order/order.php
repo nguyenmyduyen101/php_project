@@ -43,6 +43,8 @@
     <div class="container">
         <h2><i class="fas fa-map-marker-alt"></i> Địa chỉ nhận hàng</h2>
         <div class="customer-info">
+        <input type="hidden" name="user_id" value="<?= $user["id"]?>">
+        <input type="hidden" name="phone_no" value="<?= $user["phone"]?>">
             <p class="info-item"><span class="label">Tên khách hàng:</span> <?= $user["user_name"]?></p>
             <p class="info-item"><span class="label">Số điện thoại:</span> <?= $user["phone"]?></p>
             <p class="info-item"><span class="label">Địa chỉ:</span> </p>
